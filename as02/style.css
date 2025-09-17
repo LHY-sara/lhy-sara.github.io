@@ -9,48 +9,32 @@ body {
 
 .banner {
     width: 100vw;
-    height: 250px;
+    height: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     background: #222;
 }
-.banner img {
-    width: 100vw;
-    height: 250px;
-    object-fit: cover;
-    display: block;
-}
-
-.main-layout {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex: 1;
-    max-width: 1200px;
-    margin: 30px auto 0 auto;
-    min-height: 400px;
-    position: relative;
-}
-
-.navigator {
-    width: 180px;
-    min-width: 140px;
-    background: #333;
+.information {
+    width: 220px;
+    min-width: 160px;
+    background: #23243a;
     color: #fff;
-    position: fixed;
-    top: 250px;
-    left: 0;
-    max-height: calc(100vh - 270px);
+    position: sticky;
+    top: 350px;
+    right: 0;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 20px 0;
-    border-radius: 0 8px 8px 0;
+    padding: 20px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     z-index: 10;
-    overflow-y: auto;
+    overflow-y: visible;
 }
+/* 修正結構錯誤，.navigator 請保留原本正確區塊 */
 .navigator ul {
     list-style: none;
     padding: 0;
@@ -73,7 +57,7 @@ body {
 .content {
     flex: 1;
     background: #fff;
-    margin: 0 20px;
+    margin: 0 40px;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -82,33 +66,40 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 200px;
-    margin-right: 260px;
+    margin-left: 250px;
+    margin-right: 250px;
 }
 
 .information {
     width: 220px;
     min-width: 160px;
-    background: #f0f0f0;
-    color: #222;
+    background: #23243a;
+    color: #fff;
     position: fixed;
-    top: 250px;
+    top: 350px;
     right: 0;
-    max-height: calc(100vh - 270px);
+    height: auto;
+    max-height: calc(100vh - 350px - 50px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px;
     border-radius: 8px 0 0 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     z-index: 10;
     overflow-y: auto;
 }
 .information h2 {
+    text-align: center;
     margin-top: 0;
+    margin-bottom: 1em;
 }
 .information ul {
     padding-left: 18px;
+    margin: 0;
+}
+.information ul li {
+    line-height: 2.1;
 }
 
 .footer {

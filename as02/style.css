@@ -16,25 +16,42 @@ body {
     overflow: hidden;
     background: #222;
 }
-.information {
-    width: 220px;
-    min-width: 160px;
-    background: #23243a;
+.banner img {
+    width: 100vw;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    max-width: 1200px;
+    margin: 30px auto 0 auto;
+    min-height: 400px;
+    position: relative;
+}
+
+.navigator {
+    width: 180px;
+    min-width: 140px;
+    background: #333;
     color: #fff;
-    position: sticky;
+    position: fixed;
     top: 350px;
-    right: 0;
+    left: 0;
     height: auto;
+    max-height: calc(100vh - 350px - 50px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 20px;
-    border-radius: 8px 0 0 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    padding: 20px 0;
+    border-radius: 0 8px 8px 0;
     z-index: 10;
-    overflow-y: visible;
+    overflow-y: auto;
 }
-/* 修正結構錯誤，.navigator 請保留原本正確區塊 */
 .navigator ul {
     list-style: none;
     padding: 0;
@@ -51,7 +68,7 @@ body {
     transition: color 0.2s;
 }
 .navigator a:hover {
-    color: #ffd700;
+    color: #ffd900e6;
 }
 
 .content {
@@ -66,12 +83,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 250px;
+    margin-left: 150px;
     margin-right: 250px;
 }
 
 .information {
-    width: 220px;
+    width: 310px;
     min-width: 160px;
     background: #23243a;
     color: #fff;
@@ -95,11 +112,11 @@ body {
     margin-bottom: 1em;
 }
 .information ul {
-    padding-left: 18px;
+    padding-left: 12px;
     margin: 0;
 }
 .information ul li {
-    line-height: 2.1;
+    line-height: 2.05;
 }
 
 .footer {

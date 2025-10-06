@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap 圖片捲動特效網頁</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+    }
+    .full-img {
+      height: 100vh;
+      width: 100vw;
+      background-image: url("https://lhy-sara.github.io/as04/Generated Image October 06, 2025 - 10_10AM.png");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .section-img-left {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background-image: url("https://lhy-sara.github.io/as04/Generated Image October 06, 2025 - 10_08AM.png");
+      background-size: cover;
+      background-position: center;
+    }
+    .section-img-right {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background-image: url("https://lhy-sara.github.io/as04/Generated Image October 06, 2025 - 11_02AM.png");
+      background-size: cover;
+      background-position: center;
+    }
+    .section-black {
+      background: #111;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+    }
+    .section-black .content {
+      max-width: 600px;
+      width: 100%;
+      text-align: left;
+      font-size: 1.3rem;
+      line-height: 2;
+    }
+    .section4-bg {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      background: url("https://lhy-sara.github.io/as04/Generated Image October 06, 2025 - 11_08AM.png") center/cover no-repeat;
+      z-index: 0;
+    }
+    .section4-content {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+    .section4-content .text {
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      padding: 2rem 3rem;
+      border-radius: 1rem;
+      font-size: 1.3rem;
+      line-height: 2;
+      text-align: left;
+      max-width: 500px;
+    }
+    .footer-section {
+      height: 100vh;
+      width: 100vw;
+      background: #222;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 第一張圖：滿版圖片加上文字版面，文字隨捲動由下而上捲進來 -->
+  <section id="section1" style="position:relative; height:200vh;">
+    <!-- 標題文字區塊置於中央 -->
+    <div style="position:absolute; top:0; left:0; width:100vw; height:100vh; z-index:10; display:flex; align-items:center; justify-content:center;">
+      <div style="background:rgba(0,0,0,0.55); color:#fff; padding:1.2rem 2.5rem; border-radius:1.5rem; font-size:2.3rem; font-weight:bold; letter-spacing:2px; box-shadow:0 2px 16px rgba(0,0,0,0.15);">
+        攀岩牆上的人生練習曲
+      </div>
+    </div>
+    <div class="full-img" style="position:sticky; top:0; left:0; width:100vw; height:100vh; z-index:1;"></div>
+    <div class="section4-content" 
+      style="position:absolute; top:100vh; left:0; width:100vw; height:100vh; z-index:2; display:flex; align-items:center; justify-content:center;">
+      <div class="text">
+        週末午後，陽光從三層樓高的落地窗灑進館內，在灰色的混凝土牆面上投下溫暖的光影。攀岩館內數十條攀登路線如同彩色編碼的指令，分佈在各種傾角的岩壁上。<br><br>
+        攀岩運動在近年來已不再是小眾活動，有人正奮力向上，繩索在身後劃出一道優美的弧線；有人在牆腳仰望，規劃著下一次的挑戰路線。紅色、藍色、黃色、綠色的攀岩點像是音符般散佈在牆上，等待著攀爬者譜出屬於自己的旋律。
+      </div>
+    </div>
+  </section>
+
+  <!-- 第二張圖：左側固定，右側黑色 -->
+  <section id="section2" class="container-fluid" style="min-height:100vh;">
+    <div class="row h-100">
+      <div class="col-lg-6 section-img-left"></div>
+      <div class="col-lg-6 section-black">
+        <div class="content">
+          「有比上一次挑戰多往前碰到一個岩點，都算是突破。」<br><br>
+          林靜在攀岩牆前凝視著下一個支點，這條路線，她已經挑戰了三個月。<br><br>
+          三年前，她因為工作壓力過大開始接觸攀岩。起初只是想找個發洩管道，沒想到卻在這面牆上找到了人生的隱喻。「你無法強求，必須讀懂岩點的語言，找到身體與牆面的對話方式。」<br><br>
+          從最基礎的5.8級路線到現在能挑戰5.11級別，每一次進步都伴隨著無數次的失敗與重來。「攀岩最迷人的地方，是它教會你面對失敗。」她說，每一次墜落都是學習，每一次重新出發都需要勇氣。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第三張圖：右側固定，左側黑色 -->
+  <section id="section3" class="container-fluid" style="min-height:100vh;">
+    <div class="row h-100">
+      <div class="col-6 section-black">
+        <div class="content">
+          結束一輪高強度攀爬後，林靜選擇在岩壁下的安全墊上盤腿而坐。她將目光投向高處，觀察另一條路線的岩點，思考可能的解法。<br><br>
+          「攀岩讓我學會信任我的身體，每一次向上，都是為了成為更好的自己。」林靜說。
+        </div>
+      </div>
+      <div class="col-6 section-img-right"></div>
+    </div>
+  </section>
+
+  <!-- 第四張圖：滿版固定，文字置於左側 -->
+  <section id="section4">
+    <div class="section4-bg"></div>
+    <div class="section4-content" style="justify-content: flex-start;">
+      <div class="text" style="margin-left:3vw;">
+        林靜抬手指向岩壁，與夥伴討論一條未完成路線的細節，從岩點的抓握角度，到重心的分配策略。<br><br>
+        當有人完成一條困難路線時，全場會響起掌聲；當有人失敗時，也會有夥伴溫暖鼓勵。<br><br>
+        攀岩牆見證了人們的蛻變，包容不同的節奏，讓每個人都能在這裡找到屬於自己的挑戰與成長。
+      </div>
+    </div>
+  </section>
+
+  <!-- 結尾頁面：100vh, full width -->
+  <section class="footer-section" style="display:flex; align-items:center; justify-content:center;">
+    <div style="max-width:800px; width:100%; font-size:1.3rem; line-height:2; text-align:center;">
+      <div style="font-weight:bold;">
+        網頁製作過程說明
+      </div>
+      <div style="margin-top:1rem;">
+        圖片生產工具為Nano Banana，使用Gemini編寫故事內容。<br>
+        本網頁以Bootstrap排版，製作捲動特效與版面互動。
+      </div>
+    </div>
+  </section>
+
+
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗夜紀元 - 奇幻冒險遊戲</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+        }
+
+        /* 導航欄樣式 */
+        .navbar {
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.95) 0%, rgba(40, 15, 60, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #6b3fa0;
+            box-shadow: 0 8px 32px rgba(107, 63, 160, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+        }
+
+        .nav-link {
+            color: #c4b5fd !important;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #a78bfa, #c4b5fd);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* 1. 翻卡效果 */
+        .flip-card {
+            perspective: 1000px;
+            width: 100%;
+            height: 400px;
+            margin: 40px 0;
+            padding: 20px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(167, 139, 250, 0.3);
+            border: 2px solid rgba(167, 139, 250, 0.3);
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 13px;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.4) 100%);
+            color: #c4b5fd;
+            transform: rotateY(180deg);
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(167, 139, 250, 0.5);
+        }
+
+        .flip-card-back h3 {
+            color: #fbbf24;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+            margin-bottom: 15px;
+        }
+
+        /* 2. Focus mode 效果 */
+        .section {
+            padding: 80px 40px;
+            min-height: 100vh;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(167, 139, 250, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section.unfocused {
+            opacity: 0.35;
+            filter: grayscale(90%) blur(3px);
+        }
+
+        .section h2 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #fbbf24 0%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+            font-weight: 900;
+        }
+
+        .section p {
+            font-size: 1.15em;
+            line-height: 1.9;
+            max-width: 900px;
+            color: #d0d0d0;
+        }
+
+        /* 3. 底線效果 */
+        .highlight-text {
+            position: relative;
+            cursor: pointer;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #fbbf24, #fcd34d);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+        }
+
+        .highlight-text.underlined::after {
+            width: 100%;
+        }
+
+        /* 背景樣式 */
+        .section-1 {
+            background: linear-gradient(135deg, rgba(20, 10, 40, 1) 0%, rgba(30, 15, 50, 1) 100%);
+            border-bottom: 2px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .section-2 {
+            background: linear-gradient(135deg, rgba(30, 15, 50, 1) 0%, rgba(40, 15, 60, 1) 100%);
+            border-bottom: 2px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .section-3 {
+            background: linear-gradient(135deg, rgba(40, 15, 60, 1) 0%, rgba(30, 15, 50, 1) 100%);
+            border-bottom: 2px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .section-4 {
+            background: linear-gradient(135deg, rgba(20, 10, 40, 1) 0%, rgba(40, 15, 60, 1) 100%);
+            border-bottom: 2px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .section-5 {
+            background: linear-gradient(135deg, rgba(30, 15, 50, 1) 0%, rgba(20, 10, 40, 1) 100%);
+        }
+
+        .flip-card-container {
+            background: linear-gradient(135deg, rgba(50, 20, 80, 0.5) 0%, rgba(40, 15, 60, 0.5) 100%);
+            padding: 60px 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            border-top: 2px solid rgba(167, 139, 250, 0.2);
+            border-bottom: 2px solid rgba(167, 139, 250, 0.2);
+            position: relative;
+        }
+
+        /* 角色卡片樣式 */
+        .character-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border: 2px solid rgba(167, 139, 250, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            max-width: 280px;
+        }
+
+        .character-card:hover {
+            border-color: rgba(251, 191, 36, 0.6);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .character-card h4 {
+            color: #fbbf24;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .character-card p {
+            font-size: 0.95em;
+            color: #c4b5fd;
+        }
+
+        /* 任務卡片 */
+        .quest-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%);
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .quest-card h5 {
+            color: #fbbf24;
+            margin-bottom: 10px;
+        }
+
+        .quest-level {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+        }
+
+        /* 社群區域 */
+        .community-section {
+            background: linear-gradient(135deg, rgba(50, 20, 80, 0.4) 0%, rgba(40, 15, 60, 0.4) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .community-post {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #fbbf24;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .community-post .author {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .community-post .time {
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.9) 0%, rgba(30, 15, 50, 0.9) 100%);
+            border-top: 2px solid rgba(167, 139, 250, 0.3);
+            padding: 40px;
+            text-align: center;
+            color: #888;
+        }
+
+        .footer a {
+            color: #a78bfa;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer a:hover {
+            color: #fbbf24;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .section p {
+                font-size: 1em;
+            }
+
+            .character-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-crown"></i> 暗夜紀元
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#worldview">世界觀</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#characters">角色</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#quests">任務</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#storyline">故事線</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#community">社群</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首頁區段 -->
+    <div class="section section-1" id="home" data-section="1">
+        <h2><i class="fas fa-book-open"></i> 暗夜紀元</h2>
+        <p style="font-size: 1.3em; margin-bottom: 20px;">一個被<span class="highlight-text">永恆的黑暗</span>籠罩的世界，等待著勇敢的冒險者去點燃希望之光</p>
+        <p>在這片<span class="highlight-text">魔法與詛咒共存</span>的大陸上，古老的神明已經沉睡，邪惡的力量逐漸甦醒。你將成為最後的希望，踏上<span class="highlight-text">充滿未知與危險</span>的旅程。每一個決定都將決定這個世界的命運。</p>
+    </div>
+
+    <!-- 翻卡區段 1 -->
+    <div class="flip-card-container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-1">
+                </div>
+                <div class="flip-card-back">
+                    <div>
+                        <h3>🏰 暗夜帝國</h3>
+                        <p>曾經輝煌的帝國，如今被永恆的黑暗吞沒。古老的城堡中隱藏著強大的力量與秘密。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 世界觀區段 -->
+    <div class="section section-2" id="worldview" data-section="2">
+        <h2><i class="fas fa-globe"></i> 世界觀介紹</h2>
+        <p>
+            暗夜紀元的世界由五個主要區域組成。在北方，<span class="highlight-text">冰凍的極地</span>籠罩著永久的寒冬；東方是<span class="highlight-text">魔法森林</span>，古老的樹木藏匿著精靈族的秘密；南方則是<span class="highlight-text">火焰荒漠</span>，熔岩湖與火焰怪物肆虐；西方的<span class="highlight-text">深淵陸地</span>充滿了未知的邪惡；而中心的<span class="highlight-text">暗夜帝國</span>則是一切的根源。
+        </p>
+        <p style="margin-top: 30px;">
+            千年前，光明女神與暗影之王的戰爭摧毀了這片土地。女神雖然封印了暗影之王，但代價是她的生命。現在，封印正在逐漸瓦解，古老的邪惡即將再次蘇醒...
+        </p>
+    </div>
+
+    <!-- 翻卡區段 2 -->
+    <div class="flip-card-container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-2">
+                </div>
+                <div class="flip-card-back">
+                    <div>
+                        <h3>✨ 魔法源泉</h3>
+                        <p>世界上最強大的魔力集中地。收集五種原始魔法的精華，獲得無比的力量。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 角色介紹區段 -->
+    <div class="section section-3" id="characters" data-section="3">
+        <h2><i class="fas fa-users"></i> 主要角色</h2>
+        <p style="margin-bottom: 40px;">與這些<span class="highlight-text">傳奇英雄</span>並肩作戰，一起對抗黑暗的力量</p>
+        
+        <div class="row w-100" style="justify-content: center;">
+            <div class="col-lg-3">
+                <div class="character-card">
+                    <h4><i class="fas fa-shield-alt"></i> 聖光騎士</h4>
+                    <p><strong>職業：</strong> 戰士</p>
+                    <p><strong>特技：</strong> 聖光盾、光刃斬</p>
+                    <p style="margin-top: 10px;">曾經的帝國護衛隊隊長，擁有不滅的聖光之力，是對抗黑暗的最後堡壘。</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="character-card">
+                    <h4><i class="fas fa-wand-magic-sparkles"></i> 秘法師</h4>
+                    <p><strong>職業：</strong> 法師</p>
+                    <p><strong>特技：</strong> 元素掌控、時空裂縫</p>
+                    <p style="margin-top: 10px;">古老的秘法知識守護者，掌握著五大原始魔法，能操控自然的力量。</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="character-card">
+                    <h4><i class="fas fa-leaf"></i> 森林精靈</h4>
+                    <p><strong>職業：</strong> 獵人</p>
+                    <p><strong>特技：</strong> 箭術精通、自然癒合</p>
+                    <p style="margin-top: 10px;">來自魔法森林的精靈，擅長遠程攻擊與治療，與自然生物有著神秘的聯繫。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 翻卡區段 3 -->
+    <div class="flip-card-container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front card-3">
+                </div>
+                <div class="flip-card-back">
+                    <div>
+                        <h3>⚔️ 傳奇武器</h3>
+                        <p>收集五件傳奇武器，每一件都擁有古神留下的強大力量與秘密。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 玩家任務區段 -->
+    <div class="section section-4" id="quests" data-section="4">
+        <h2><i class="fas fa-scroll"></i> 玩家任務</h2>
+        <p style="margin-bottom: 40px;">接受各種難度的任務，提升等級並解開世界的秘密</p>
+
+        <div class="container" style="max-width: 800px;">
+            <div class="quest-card">
+                <h5><i class="fas fa-star"></i> 光明的初生</h5>
+                <span class="quest-level">新手</span>
+                <p>踏入<span class="highlight-text">暗夜帝國的邊境</span>，擊敗影子怪物，收集三件聖光碎片。這是你成為英雄的第一步。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5><i class="fas fa-star"></i> 冰凍極地的秘密</h5>
+                <span class="quest-level">中級</span>
+                <p>前往北方的<span class="highlight-text">冰凍極地</span>，尋找失落的冰晶之塔。據說那裡隱藏著古老巨人留下的力量。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5><i class="fas fa-star"></i> 魔法森林的迷思</h5>
+                <span class="quest-level">中級</span>
+                <p>深入<span class="highlight-text">魔法森林</span>的心臟，與精靈族的傳奇獵人戰鬥，獲得森林之心的祝福。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5><i class="fas fa-star"></i> 火焰荒漠的審判</h5>
+                <span class="quest-level">困難</span>
+                <p>穿越<span class="highlight-text">火焰荒漠</span>的熊熊烈火，擊敗火焰龍王，獲取熔岩之心。這將考驗你真正的實力。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5><i class="fas fa-crown"></i> 封印瓦解的徵兆</h5>
+                <span class="quest-level">史詩</span>
+                <p>探尋<span class="highlight-text">深淵陸地</span>的真相，發現暗影之王甦醒的跡象，並尋找阻止末日降臨的方法。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 故事線區段 -->
+    <div class="section section-3" id="storyline" data-section="3">
+        <h2><i class="fas fa-theater-masks"></i> 觸發故事線</h2>
+        <p style="margin-bottom: 40px;">根據你的選擇，世界將以<span class="highlight-text">不同的方式</span>改變</p>
+
+        <div class="container" style="max-width: 900px;">
+            <div class="quest-card">
+                <h5 style="color: #fbbf24;">📖 第一章：光的希望</h5>
+                <p>當你收集到三件聖光碎片後，聖光騎士會向你揭露一個秘密：<span class="highlight-text">光明女神並未真正死亡</span>，她的靈魂被分散在五個魔法源泉中。只有重新聚合她的靈魂，才能對抗即將甦醒的暗影之王。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5 style="color: #fbbf24;">📖 第二章：抉擇的時刻</h5>
+                <p>在你探索各個區域的過程中，你將面臨一個關鍵的抉擇：是否<span class="highlight-text">犧牲一位同伴</span>以獲得強大的暗影力量，還是堅守光明之路？你的選擇將決定故事的走向。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5 style="color: #fbbf24;">📖 第三章：封印的崩潰</h5>
+                <p>當封印徹底瓦解時，<span class="highlight-text">暗影之王終於甦醒</span>。他不是單純的邪惡，而是曾經受到光明女神背叛的古老神明。你將了解到這場千年戰爭的真相。</p>
+            </div>
+
+            <div class="quest-card">
+                <h5 style="color: #fbbf24;">📖 最終章：新世紀的黎明</h5>
+                <p>在最終的決戰中，你將有多種可能的結局：<span class="highlight-text">封印暗影之王、與他共存、或是選擇全新的道路</span>。每一個選擇都將塑造這個世界的未來。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 社群交流區段 -->
+    <div class="section section-2" id="community" data-section="5">
+        <h2><i class="fas fa-comments"></i> 玩家交流情報</h2>
+        <p style="margin-bottom: 40px;">與全世界的冒險者分享你的<span class="highlight-text">經驗與發現</span></p>
+
+        <div class="container" style="max-width: 1000px;">
+            <div class="community-section">
+                <h5 style="color: #fbbf24; margin-bottom: 20px;"><i class="fas fa-fire"></i> 熱門攻略</h5>
+                
+                <div class="community-post">
+                    <div class="author">🎮 ShadowHunter</div>
+                    <div class="time">2天前</div>
+                    <p style="margin-top: 8px;">我發現了<span class="highlight-text">隱藏的秘密洞穴</span>！在火焰荒漠的西北方有一個被岩石掩蓋的入口，裡面有超級強大的BOSS和傳奇裝備。建議等級40以上再挑戰。</p>
+                </div>
+
+                <div class="community-post">
+                    <div class="author">✨ MysticMage</div>
+                    <div class="time">4天前</div>
+                    <p style="margin-top: 8px;">新手必看！<span class="highlight-text">五大原始魔法的位置</span>：火焰=南方荒漠、冰凍=北方極地、電系=東方森林、自然=中心帝國、暗影=西方深淵。集齊五個可以解鎖終極技能！</p>
+                </div>
+
+                <div class="community-post">
+                    <div class="author">⚔️ LightBringer</div>
+                    <div class="time">1週前</div>
+                    <p style="margin-top: 8px;">關於<span class="highlight-text">角色選擇的建議</span>：聖光騎士適合新手，輸出穩定；秘法師需要走位但傷害爆表；森林精靈是最強輔助。建議組隊時至少有一個精靈。</p>
+                </div>
+            </div>
+
+            <div class="community-section" style="margin-top: 30px;">
+                <h5 style="color: #fbbf24; margin-bottom: 20px;"><i class="fas fa-lightbulb"></i> 遊戲秘訣</h5>
+                
+                <div class="community-post">
+                    <div class="author">🔍 LoreKeeper</div>
+                    <div class="time">3天前</div>
+                    <p style="margin-top: 8px;">我破解了<span class="highlight-text">暗影之王的真實身份</span>！據古籍記載，他本是光明女神的兄長，被她封印是因為他想要拯救被詛咒的人類。也許故事不像表面看起來那麼簡單...</p>
+                </div>
+
+                <div class="community-post">
+                    <div class="author">💰 GoldFinder</div>
+                    <div class="time">5天前</div>
+                    <p style="margin-top: 8px;"><span class="highlight-text">最快升級賺錢的方法</span>：在魔法森林刷「影子怪物」，每隻掉落100-500金幣，還有經驗。30分鐘可以賺取5000金幣，超划算！</p>
+                </div>
+
+                <div class="community-post">
+                    <div class="author">🎯 QuestMaster</div>
+                    <div class="time">6天前</div>
+                    <p style="margin-top: 8px;">發現了<span class="highlight-text">隱藏任務鏈</span>！如果你在特定時間（遊戲中的午夜）到訪暗夜帝國的廢墟，會觸發一個超難的隱藏副本。獎勵是傳奇武器和5000經驗！</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(251, 191, 36, 0.1); border: 2px solid rgba(251, 191, 36, 0.3); border-radius: 12px; padding: 25px; margin-top: 30px; backdrop-filter: blur(10px);">
+                <h5 style="color: #fbbf24; margin-bottom: 15px;"><i class="fas fa-bell"></i> 官方活動公告</h5>
+                <p style="margin: 10px 0;">🎉 <strong>本週活動：</strong> 所有副本掉落<span class="highlight-text">翻倍經驗與金幣</span>，快點升級吧！</p>
+                <p style="margin: 10px 0;">🏆 <strong>排行榜競賽：</strong> 最先打敗火焰龍王的玩家可以獲得<span class="highlight-text">傳奇坐騎「龍」</span>一隻！</p>
+                <p style="margin: 10px 0;">🎁 <strong>每日登入：</strong> 連續登入7天可獲得<span class="highlight-text">神秘寶箱</span>一個，內含稀有裝備和消耗品！</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁尾 -->
+    <div class="footer">
+        <h5 style="color: #c4b5fd; margin-bottom: 20px;">暗夜紀元</h5>
+        <p style="margin: 10px 0;">© 2024 暗夜紀元遊戲工作室。版權所有。</p>
+        <p style="margin: 20px 0;">
+            <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fab fa-discord"></i> Discord</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+        </p>
+        <p style="margin-top: 20px; font-size: 0.9em;">「在黑暗中尋找光明，是所有勇者的宿命」</p>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    $(function () {
+        var winh = $(window).height();
+        var flippedCards = {};
+
+        // 平滑滾動導航
+        $('a[href^="#"]').on('click', function(e) {
+            e.preventDefault();
+            var target = $(this.getAttribute('href'));
+            if(target.length) {
+                $('html, body').stop().animate({
+                    scrollTop: target.offset().top - 80
+                }, 1000);
+            }
+        });
+
+        // 1. 翻卡效果 - 每張卡片獨立計數
+        $(window).scroll(function () {
+            var current_pos = $(document).scrollTop();
+            
+            $(".flip-card-inner").each(function (index) {
+                var $card = $(this);
+                var cardId = "card-" + index;
+                
+                if (current_pos > $card.offset().top - winh / 2 && !flippedCards[cardId]) {
+                    $card.addClass("flipped");
+                    flippedCards[cardId] = true;
+                }
+            });
+        });
+
+        // 2. Focus mode 效果 - 當區段底部即將離開畫面時降低色調
+        $(window).scroll(function () {
+            var current_pos = $(document).scrollTop() + winh;
+            
+            $(".section").each(function () {
+                var $section = $(this);
+                var sectionTop = $section.offset().top;
+                var sectionBottom = sectionTop + $section.outerHeight();
+                
+                // 如果區段底部即將離開畫面
+                if (sectionBottom < current_pos - winh * 0.1) {
+                    $section.addClass("unfocused");
+                } else {
+                    $section.removeClass("unfocused");
+                }
+            });
+        });
+
+        // 3. 底線效果 - 捲動到特定文字時觸發
+        $(window).scroll(function () {
+            var current_pos = $(document).scrollTop();
+            
+            $(".highlight-text").each(function () {
+                var $text = $(this);
+                var textTop = $text.offset().top;
+                var textBottom = textTop + $text.outerHeight();
+                
+                // 如果文字在可視範圍內
+                if (textTop < current_pos + winh && textBottom > current_pos) {
+                    $text.addClass("underlined");
+                } else {
+                    $text.removeClass("underlined");
+                }
+            });
+        });
+
+        // 初始觸發一次
+        $(window).scroll();
+    });
+    </script>
+</body>
+</html>

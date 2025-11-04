@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣街景美學</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+            background-color: #faf8f3;
+        }
+
+        #outer {
+            background-image: url("http://lhy-sara.github.io/as07/image01.png");
+            background-size: cover;
+            background-repeat: none;
+            background-attachment: fixed;
+        }
+
+        #statusbar {
+            width: 100%;
+            height: 200px;
+            background-image: url("http://lhy-sara.github.io/as07/image02.png");
+            background-size: cover;
+            background-repeat: none;
+            background-attachment: fixed;
+            max-width: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .intro-section {
+            padding: 120px 40px;
+            background: linear-gradient(135deg, #faf8f3 0%, #f5f1eb 100%);
+            text-align: center;
+            min-height: auto;
+        }
+
+        .intro-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            color: #5a4a42;
+        }
+
+        .intro-section p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #8b7355;
+            max-width: 900px;
+            margin: 0 auto 20px;
+            font-weight: 600;
+        }
+
+        .scroll-container {
+            height: 600vh;
+            position: relative;
+        }
+
+        .horizontal-section {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 300vw;
+            display: flex;
+            flex-direction: row;
+            transition: transform 0.05s linear;
+        }
+
+        .horizontal-item {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border-right: 3px solid #e8d4c4;
+        }
+
+        .horizontal-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.95;
+        }
+
+        .section-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(90,74,66,0.88), rgba(90,74,66,0.35));
+            padding: 50px 40px;
+            color: #faf8f3;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #faf8f3;
+        }
+
+        .section-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            max-width: 650px;
+            color: #f5f1eb;
+            font-weight: 600;
+        }
+
+        .section-description p {
+            margin: 0 !important;
+        }
+
+        .highlight {
+            background-color: #e8d4c4;
+            padding: 5px 12px;
+            border-radius: 4px;
+            color: #5a4a42;
+            font-weight: 700;
+        }
+
+        .grey-section {
+            background: linear-gradient(135deg, #e8ddd4 0%, #d9cfc6 100%);
+            padding: 100px 40px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grey-section h3 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 30px;
+            color: #5a4a42;
+        }
+
+        .grey-section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #6b5b53;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .grey-section-content {
+            max-width: 1000px;
+        }
+
+        .content-point {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 30px;
+            margin: 20px 0;
+            border-left: 4px solid #a08270;
+            border-radius: 4px;
+        }
+
+        .content-point h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #5a4a42;
+            margin-bottom: 15px;
+        }
+
+        .content-point p {
+            margin: 0 !important;
+        }
+
+        .progress-info-box {
+            background: rgba(90, 74, 66, 0.85);
+            padding: 50px;
+            color: #faf8f3;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .progress-info-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .progress-info-box p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #e8ddd4;
+        }
+
+        .ending-section {
+            background: linear-gradient(135deg, #8b7355 0%, #a08270 100%);
+            color: #faf8f3 !important;
+            padding: 150px 40px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ending-section h1 {
+            color: #faf8f3 !important;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        .ending-section p {
+            color: #e8ddd4 !important;
+            font-weight: 600;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .ending-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .insight-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .insight-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #faf8f3;
+            margin-bottom: 15px;
+        }
+
+        .insight-card p {
+            font-size: 1rem;
+            color: #e8ddd4;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .intro-section {
+                padding: 80px 30px;
+            }
+
+            .intro-section h1 {
+                font-size: 2.2rem;
+            }
+
+            .intro-section p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .section-description {
+                font-size: 0.95rem;
+            }
+
+            .insight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ending-section {
+                padding: 80px 30px;
+            }
+
+            .ending-section h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 介紹區 -->
+    <div class="intro-section">
+        <h1>台灣街景美學</h1>
+        <p>不同文化視角下的台灣街景</p>
+        <p>同一條街道、不同的眼睛、不同的美學詮釋</p>
+        <p>台灣人眼中的「醜陋」，卻是世界眼中的「詩意」</p>
+        <p>向下滾動，探索台灣街景在各地眼中的獨特樣貌</p>
+    </div>
+
+    <!-- 進度條與說明 -->
+    <div style="height:600vh">
+        <div id="outer" class="sticky-top">
+            <div id="statusbar" style="height:200vh"></div>
+            <div class="progress-info-box">
+                <h3>進度條：認識差異</h3>
+                <p>向下滾動進度條填滿，體驗台灣街景的不同美學視角轉變</p>
+                <p style="margin-top: 15px; font-size: 0.95rem;">進度條代表台灣人對街景的自我認知，完成後將進入國際視角的浪漫想像</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 灰色過渡區 1 -->
+    <div class="grey-section">
+        <div class="grey-section-content">
+            <h3>街景美學的文化衝突</h3>
+            <p>台灣城市景觀經歷了不同時代的建築與設計風格疊疊相加。從日本殖民時期的理性規劃，到民國時期的混雜發展，再到當代文青文化的崛起，台灣街景成為了一個龐雜的時光拼圖。</p>
+            
+            <div class="content-point">
+                <h4>台灣的多層時間軸</h4>
+                <p>一條街道可能同時存在日治時期的騎樓、民國時期的紅白藍招牌、當代的玻璃帷幕大樓，以及最新開張的咖啡館。這種時間的堆疊創造了獨特的視覺語言。</p>
+            </div>
+
+            <p>最有趣的是，台灣人對自己街景的評價往往是負面的，但這種看似凌亂的美學，卻在國際社群眼中被賦予了全然不同的意義——有人看見了文青懷舊，有人看見了浪漫感性。</p>
+
+            <div class="content-point">
+                <h4>自我否定與國際讚美的落差</h4>
+                <p>當台灣人用「老舊」、「雜亂」來批評街景時，日本和韓國的年輕人卻在Instagram上標記#TaiwanAesthetic，將同樣的場景稱為「懷舊的魔力」與「迷人的不完美」。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 水平滾动區 -->
+    <div class="scroll-container">
+        <div class="horizontal-section">
+            <!-- Section 1: 中華民國美學 -->
+            <div class="horizontal-item" style="background: #2c3e50;">
+                <img src="https://lhy-sara.github.io/as07/image03.png" alt="Section 1">
+                <div class="section-overlay">
+                    <div class="section-title">台灣人眼中的街景</div>
+                    <div class="section-description">
+                        <span class="highlight">中華民國美學</span>
+                        <p style="margin-top:15px;">紅白藍招牌、密集的電線、老舊的招牌字體，台灣人習慣性地將這些元素視為「醜」的象徵。這些源自民國時期的視覺語言，在台灣人心中代表著陳舊與雜亂。許多台灣人甚至會感到自我厭惡，渴望城市能看起來「更整潔、更現代」。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: 日本文青視角 -->
+            <div class="horizontal-item" style="background: #34495e;">
+                <img src="https://lhy-sara.github.io/as07/image04.png" alt="Section 2">
+                <div class="section-overlay">
+                    <div class="section-title">日本雜誌眼中的台灣</div>
+                    <div class="section-description">
+                        <span class="highlight">文青感的街景</span>
+                        <p style="margin-top:15px;">日本的文化觀光媒體卻看到了不同的故事。那些老舊的招牌、昏黃的街燈、混雜的建築風格，被重新詮釋為「懷舊的魅力」與「文青感」。在日本雜誌《台灣の街角美學》中，台灣街景被冠以「亞洲的復古寶庫」，台灣街景的凌亂反而成為了一種真實而迷人的特質。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: 韓國浪漫視角 -->
+            <div class="horizontal-item" style="background: #1a252f;">
+                <img src="https://lhy-sara.github.io/as07/image05.png" alt="Section 3">
+                <div class="section-overlay">
+                    <div class="section-title">韓國人眼中的台灣</div>
+                    <div class="section-description">
+                        <span class="highlight">浪漫懷舊感</span>
+                        <p style="margin-top:15px;">在韓國年輕族群和旅遊社群中，台灣街景被賦予了更多詩意的解讀。那些老舊的公寓樓、夜市的霓虹燈、巷弄裡的人情味，被看作是一種「失落的懷舊」與「不完美的浪漫」。韓國美妝及旅遊KOL頻繁到訪台灣，錄製以街景為主題的內容，將台灣稱為「懷舊感的聖地」。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 灰色過渡區 2 -->
+    <div class="grey-section">
+        <div class="grey-section-content">
+            <h3>美學的相對性</h3>
+            <p>這三個視角的碰撞告訴我們一個重要的真理：<span class="highlight">美學是相對的</span>。台灣街景並沒有改變，改變的是觀看者的眼光與文化背景。</p>
+            
+            <div class="content-point">
+                <h4>文化背景如何塑造審美</h4>
+                <p>台灣人受到現代化進程的影響，將整潔與秩序視為美的標準。但日本人懷念自己失去的類似景觀，韓國人則在台灣街景中找到了某種情感上的共鳴——那是他們父母一代的時代。</p>
+            </div>
+
+            <p>台灣人眼中的「不堪」，正是日本人眼中的「古樸」、韓國人眼中的「感傷」。這提醒我們重新審視自己的城市，那些被我們忽視的細節，可能正是最珍貴的文化資產。</p>
+
+            <div class="content-point">
+                <h4>重新定義街景價值</h4>
+                <p>街景美學不是非黑即白的判斷，而是一種多元的、流動的、充滿故事的體驗。每一條電線、每一個招牌、每一面老牆都記錄著台灣的歷史與人文。在認識差異的同時，我們也在重新認識台灣。</p>
+            </div>
+
+            <p style="margin-top:25px;">正是這份「不完美」，讓台灣街景成為了全球都市美學討論中最迷人的案例。</p>
+        </div>
+    </div>
+
+    <!-- 結尾區 -->
+    <div class="ending-section">
+        <div class="ending-content">
+            <h1>重新看見台灣</h1>
+            <p style="font-size:1.25rem;margin-bottom:40px;">你眼中的街景是什麼樣子？</p>
+            
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h4>台灣人的視角</h4>
+                    <p>看見需要改進與現代化的城市，追求整潔與秩序</p>
+                </div>
+                <div class="insight-card">
+                    <h4>國際的視角</h4>
+                    <p>看見珍貴的時間積累，一個真實而迷人的社會縮影</p>
+                </div>
+                <div class="insight-card">
+                    <h4>重新詮釋</h4>
+                    <p>將否定轉為欣賞，發現台灣街景的獨特魅力與價值</p>
+                </div>
+            </div>
+
+            <p style="margin-top:40px;font-size:1rem;opacity:0.9;">也許，改變不一定要從修建街景開始，而是從改變我們對街景的看法開始。</p>
+            <p style="font-size:0.9rem;margin-top:30px;opacity:0.8;">台灣街景美學 © 2025</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var win_w = $(window).width();
+
+            $(window).scroll(function () {
+                var scrolled = $(window).scrollTop();
+                
+                var progressStart = $(window).height();
+                var progressEnd = progressStart + (600 * $(window).height() / 100);
+                var progressDistance = progressEnd - progressStart;
+                
+                if (scrolled < progressStart) {
+                    $("#statusbar").css("max-width", "0px");
+                } else if (scrolled >= progressStart && scrolled < progressEnd) {
+                    var progressScrolled = scrolled - progressStart;
+                    var new_width = (win_w * progressScrolled) / progressDistance;
+                    $("#statusbar").css("max-width", new_width + "px");
+                } else {
+                    $("#statusbar").css("max-width", win_w + "px");
+                }
+            });
+        });
+
+        $(function () {
+            const $scrollContainer = $(".scroll-container");
+            const $horizontalSection = $(".horizontal-section");
+            let containerOffsetTop = 0;
+            let containerHeight = 0;
+            
+            function updateSizes() {
+                containerOffsetTop = $scrollContainer.offset().top;
+                const maxHorizontalScroll = $horizontalSection.outerWidth() - $(window).width();
+                containerHeight = maxHorizontalScroll;
+            }
+            updateSizes();
+            $(window).on("resize", updateSizes);
+            
+            $(window).on("scroll", function () {
+                const scrolled = $(window).scrollTop();
+                let scrollPercentage = 0;
+                
+                if (scrolled >= containerOffsetTop) {
+                    const relativeScroll = scrolled - containerOffsetTop;
+                    scrollPercentage = Math.min(relativeScroll / containerHeight, 1);
+                }
+                
+                const maxScroll = $horizontalSection.outerWidth() - $(window).width();
+                const horizontalScroll = scrollPercentage * maxScroll;
+                $horizontalSection.css("transform", `translateX(-${horizontalScroll}px)`);
+            });
+        });
+    </script>
+</body>
+
+</html>

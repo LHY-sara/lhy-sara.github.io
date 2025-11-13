@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Landing Page */
+    #landing {
+      height: 100vh;
+      background: linear-gradient(135deg, #8B7355 0%, #5D4E37 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    #landing h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #landing p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    /* Onboarding Section */
+    #onboarding {
+      min-height: 100vh;
+      padding: 60px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .onboarding-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      background-color: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #landing h1 {
+        font-size: 2.5rem;
+      }
+
+      .onboarding-title {
+        font-size: 1.8rem;
+      }
+    }
+
+    /* Text description */
+    .description-box {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .description-box h3 {
+      color: #8B7355;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .description-box p {
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    /* Core Narrative Chapters */
+    .narrative-chapter {
+      position: relative;
+      min-height: 300vh; /* 足够的空间让文字捲动 */
+    }
+
+    .video-background {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+    }
+
+    .video-background video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .chapter-content {
+      position: relative;
+      z-index: 10;
+      pointer-events: auto;
+    }
+
+    .text-scroll-container {
+      min-height: 300vh;
+      padding: 100vh 0 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .text-block {
+      background-color: rgba(139, 115, 85, 0.65);
+      color: white;
+      padding: 50px 40px;
+      margin: 30px auto;
+      border-radius: 12px;
+      max-width: 700px;
+      width: 90%;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .text-block h2 {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      font-weight: bold;
+      color: #fff;
+      border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 15px;
+    }
+
+    .text-block h3 {
+      font-size: 1.8rem;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #f0f0f0;
+    }
+
+    .text-block p {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      color: #e0e0e0;
+    }
+
+    .text-block ul {
+      margin: 20px 0;
+      padding-left: 25px;
+    }
+
+    .text-block li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 12px;
+      color: #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      .text-block {
+        padding: 35px 25px;
+        max-width: 95%;
+      }
+
+      .text-block h2 {
+        font-size: 1.9rem;
+      }
+
+      .text-block h3 {
+        font-size: 1.5rem;
+      }
+
+      .text-block p,
+      .text-block li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Landing Page -->
+  <section id="landing">
+    <div>
+      <h1>Geography of Hope and Steel</h1>
+      <p>A Four-Part Chronicle of the Borderlands</p>
+    </div>
+  </section>
+
+  <!-- Onboarding Section -->
+  <section id="onboarding">
+    <div class="container-fluid">
+      <h2 class="onboarding-title">Documentary Series</h2>
+      
+      <div class="row">
+        <!-- Left: Videos Grid (2x2) -->
+        <div class="col-lg-8">
+          <div class="videos-grid">
+            <div class="video-container" data-video="1">
+              <video controls muted>
+                <source src="/as08/video01.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container" data-video="2">
+              <video controls muted>
+                <source src="/as08/video02.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container" data-video="3">
+              <video controls muted>
+                <source src="/as08/video03.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-container" data-video="4">
+              <video controls muted>
+                <source src="/as08/video04.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Text Description -->
+        <div class="col-lg-4">
+          <div class="description-box">
+            <h3>Border: A Chronicle of the Dividing Line</h3>
+            <p>
+              This four-part series, titled <em>Border: A Chronicle of the Dividing Line</em>, is an immersive documentary experience designed to move beyond political rhetoric and place the viewer directly into the complex, often unseen reality of the US-Mexico borderlands.
+            </p>
+            <p>
+              It is not merely a collection of footage, but a deliberately paced, four-movement symphony of human resilience, geopolitical friction, and the relentless pursuit of a better life.
+            </p>
+            <p>
+              The series uses the physical location—the unforgiving landscape, the towering steel, the bustling border towns—as a dramatic backdrop for intimate, character-driven narratives, inviting a quiet contemplation of what it means to belong, to journey, and to start anew at one of the world's most scrutinized boundaries.
+            </p>
+            <p>
+              It challenges the observer to acknowledge the depth of the stories etched into the very soil of the border region.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Narrative Chapters -->
+  <section class="narrative-chapter" data-chapter="1">
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="https://lhy-sara.github.io/as08/video01.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="chapter-content">
+      <div class="text-scroll-container">
+        <div class="text-block">
+          <h2>The Compass of the Cacti</h2>
+          <h3>The Director's First Sketch</h3>
+          <p>The genesis of <em>The Compass of the Cacti</em> was born out of exhaustion with the two-dimensional media portrayal of the border. Director Elena "Ellie" Reyes, a filmmaker whose own family history straddled the Rio Grande, approached this first installment not as a political statement, but as a topographical survey of the human spirit. She rejected the idea of a single protagonist, opting instead for a sprawling collection of vignettes. Her primary goal was to humanize the setting itself, using the landscape—the ocotillo, the saguaro, the shifting sands of the Sonoran Desert—as a silent, yet powerful, character in the unfolding drama.</p>
+          
+          <p>Ellie's initial scouting trip yielded more than 40 hours of audio interviews before a single frame of video was shot. She sought out people whose lives were inextricably linked to the border but rarely spoke on camera: the retired rancher who used to wave at his counterparts across the river, the volunteer who left water jugs along known migratory routes, and the local shop owner whose livelihood depended entirely on the fluctuating cross-border traffic.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>The Emotional North Star</h3>
+          <p>The most powerful sequence, and the one that dictated the film's tone, involved an encounter with a group of indigenous people living on a reservation split by the line. Their ancestral lands were arbitrarily cut in half by modern cartography, forcing them to navigate international bureaucracy simply to visit family or attend a ritual on land they had walked for generations. The frustration in their voices, recorded late one evening near a checkpoint, became the series' emotional north star.</p>
+          
+          <p>Ellie recalled that moment in her production journal: "It wasn't about the crossing; it was about the being—being there and being stuck. The border is not just a fence; it's a denial of history, a disruption of nature, and an absurdity for those who predate it."</p>
+        </div>
+
+        <div class="text-block">
+          <h3>The Challenge of Editing</h3>
+          <p>The challenge was in the editing. How do you stitch together the story of a deported construction worker hoping to see his U.S.-born daughter again, the story of a young Maquiladora worker saving every peso to attend university in Mexico City, and the story of a Border Patrol agent quietly lamenting the thankless nature of his job?</p>
+          
+          <p>The answer lay in contrast and proximity. By using a split-screen technique in certain segments, Ellie visually forced the simultaneous existence of opposing realities: a thriving U.S. shopping mall visible just beyond the wall where a family was huddled, waiting for nightfall on the Mexican side. This technique became the film's metaphorical compass, guiding the viewer through the moral and practical contradictions of the zone.</p>
+          
+          <p>The soundtrack, composed entirely of field recordings—the rustle of desert wind, the distant rumble of freight trains, the crackle of two-way radios—was critical in maintaining a sense of raw, unmediated presence.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>A Testament to Resilience</h3>
+          <p><em>The Compass of the Cacti</em> ultimately became a testament to the idea that there is no singular 'border story,' but millions of them, all intersecting in this narrow, volatile corridor. It is an act of documentary cartography, mapping not territories, but the invisible lines of sacrifice, hope, and survival.</p>
+          
+          <p>The title itself is a reference to the desert's resilience: like the cacti, the people of the border find a way to absorb every meager drop of life available to them, thriving where others would simply perish. The behind-the-scenes realization for the entire crew was that they were documenting a place of perpetual motion and stillness, where every footstep and every silent wait carried the weight of history and an uncertain future.</p>
+          
+          <p>This first film sets the heavy, hopeful tone for the chapters that follow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-chapter" data-chapter="2">
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="https://lhy-sara.github.io/as08/video02.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="chapter-content">
+      <div class="text-scroll-container">
+        <div class="text-block">
+          <h2>The Unseen Path</h2>
+          <h3>Tracking the Ghost Train</h3>
+          <p>The central challenge in filming <em>The Unseen Path</em> was access and safety. The crew made the crucial decision to follow a small cohort of travelers for several weeks, tracking their movement as they followed <em>La Bestia</em> (The Beast), the network of freight trains used by migrants heading north. This required an unprecedented level of trust, which was established only after weeks spent volunteering at shelters and earning the respect of the individuals who became the film's core subjects.</p>
+          
+          <p>Producer Miguel Santos recounted the intense ethical debate over how much of the danger should be shown. "We were not there to sensationalize suffering; we were there to witness endurance," he wrote in his daily log. They agreed to never film a person's face without explicit, repeated consent, and more importantly, they would never film a dangerous act (like jumping a moving train) without first ensuring their subject had an escape plan and that the crew was positioned to intervene if absolutely necessary—an ethical line they crossed, but thankfully never had to act upon.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>Alma and Mateo's Journey</h3>
+          <p>The narrative spine of the film became the story of Alma, a young mother from Honduras traveling with her seven-year-old son, Mateo. Her journey was marked by a chilling juxtaposition of maternal devotion and terrifying risk. One segment, filmed secretly from a distant hill, captures Alma and Mateo sheltering in a derelict structure during a torrential downpour. The shot holds for five full minutes—just the sound of the rain and Mateo quietly humming a lullaby his mother taught him. It's a moment of profound stasis amidst a life of constant motion, illustrating the internal sanctuary a parent must create for a child under duress.</p>
+          
+          <p>To achieve this intimacy, the cinematographers abandoned bulky equipment. Most of the footage was shot on high-definition, handheld cameras designed for extreme conditions, making the camera itself another weary traveler. The crew experienced the same lack of food, the same exhaustion, and the same constant vigilance as their subjects, leading to what Ellie called a "shared state of emotional exhaustion" that is palpable in the final edit.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>Voices Along the Way</h3>
+          <p>The film doesn't offer talking-head interviews; instead, the dialogue is captured in snatched conversations: Alma describing the taste of her mother's cooking, Mateo asking if their new home will have a park, or a fellow traveler sharing a worn photograph of his own family.</p>
+          
+          <p>The most difficult scene to capture, and the most significant piece of the behind story, was the moment when the group, exhausted and demoralized after a near-miss with authorities, collectively decided to pause. They found a small, hidden stream, and for thirty minutes, they simply washed their faces and feet. It was not a scene of tears or dramatic confession, but of quiet, dignified restoration.</p>
+          
+          <p>The camera stayed low, focusing on the water washing away the dust, a momentary cleansing before the path continued. This act of self-care—a small, rebellious claim to humanity on a road designed to strip it away—is the true heart of <em>The Unseen Path</em>, demonstrating that the journey is defined less by its hardships and more by the indomitable spirit required to survive them, step after grueling step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-chapter" data-chapter="3">
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="https://lhy-sara.github.io/as08/video03.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="chapter-content">
+      <div class="text-scroll-container">
+        <div class="text-block">
+          <h2>The Architecture of Separation</h2>
+          <h3>The Paradox of the Steel</h3>
+          <p>The production of <em>The Architecture of Separation</em> was, in many ways, an exercise in paradox. The team spent weeks obtaining permissions to film the Wall's construction and maintenance from the U.S. side, and then spent equal time carefully documenting the effects and counter-measures from the Mexican side. Director Ellie Reyes framed the film around two main characters: Marco, a steelworker from Texas who helped erect sections of the barrier, and Sofia, an environmental researcher in Sonora whose work documenting the disruption of migratory animal paths was being threatened by its expansion.</p>
+          
+          <p>Marco's testimony was quietly devastating. He spoke not of politics, but of the relentless physical labor, the heat, and the sheer volume of steel. His narrative focused on the mundane details—the specific gauge of the metal, the torque required for the bolts, the miles of welding—which, when compiled, illustrated the extraordinary human effort required to construct an edifice designed to separate people. He described the wall as "the quietest, loudest thing I've ever built," a physical monument to a political shouting match.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>The Environmental Perspective</h3>
+          <p>On the other side, Sofia's fieldwork provided the film's environmental perspective. The team followed her as she used remote cameras to track species—like the endangered Sonoran Pronghorn and the Jaguar—whose ancient routes were being severed by the construction. One chilling sequence shows a camera trap capturing a small family of deer repeatedly approaching a newly erected section, confused by the sudden, impassable barrier. This footage serves as a powerful metaphor for the human experience, demonstrating that the wall is a disorienting interruption of natural order.</p>
+          
+          <p>The filming process involved extensive use of drones to capture the sheer, mind-boggling scale of the barrier, particularly in isolated desert sections. The high-altitude shots show the wall stretching into the horizon like a scar, a stark line cutting through the pristine wilderness.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>Art as Resistance</h3>
+          <p>However, the most emotionally resonant scenes were shot at ground level, documenting the artistic and defiant responses to the barrier. The team spent several days with a collective of Mexican artists who were painting murals on the metal slats, transforming cold steel into vibrant canvases of protest, memory, and hope. These ephemeral acts of beauty—a giant portrait of a child, a painted flower blooming on the steel—were a necessary counterpoint to the Wall's oppressive silence.</p>
+          
+          <p>The behind-the-scenes realization was that the Wall is not a perfect barrier; it is porous, frequently breached, and ultimately, a reflection of human intention rather than a successful object of separation. The construction workers like Marco are bound to the steel, and the residents like Sofia are bound to the land.</p>
+          
+          <p>The film posits that the only thing stronger than the industrial will to build the wall is the relentless human and natural will to find a way around, over, or through it. <em>The Architecture of Separation</em> is a study in materials: the unforgiving steel versus the pliable, enduring spirit of the people it attempts to contain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-chapter" data-chapter="4">
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="https://lhy-sara.github.io/as08/video04.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="chapter-content">
+      <div class="text-scroll-container">
+        <div class="text-block">
+          <h2>Anchor and Horizon</h2>
+          <h3>Finding the Ground</h3>
+          <p>The final film, <em>Anchor and Horizon</em>, was the most logistically challenging because it required following settled individuals over a period of two years to capture genuine, non-staged moments of adaptation. The crew focused on a tight-knit community of former migrants in a small, industrial neighborhood far from the border in a Midwestern state. They chose this location specifically to demonstrate that the ripple effects of the border extend deep into the U.S. interior.</p>
+          
+          <p>The lead subject became Clara, a former nurse who now worked two shifts as a cleaner to pay for her children's schooling. Her narrative was a powerful study in deferred dreams and pragmatic hope. The camera spent hundreds of hours in her small apartment, capturing the ritualistic way she maintained her home: the specific way she folded laundry, the careful placement of a single, potted plant, the framed photos from her hometown. These small details were the true "behind the scenes" of her new life—the constant, quiet effort to make a temporary space feel permanent and safe.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>The Festival and the Horizon</h3>
+          <p>The emotional climax of the film comes during the filming of a community event—a traditional festival organized by the migrant population. It is a joyful, chaotic burst of sound and color, a slice of the homeland transplanted onto American asphalt. The director, Ellie, decided to film this scene with a specific intention: to capture not just the celebration, but the underlying tension.</p>
+          
+          <p>A long, handheld shot follows Clara through the crowd. She laughs, she dances, but every few seconds, her eyes flick to the horizon, to the edge of the frame, a habit born from years of looking over her shoulder. This subtle visual cue was key to the film's message: that the "new beginning" is not an erasure of the past, but an active, daily negotiation with it.</p>
+        </div>
+
+        <div class="text-block">
+          <h3>The Second Generation</h3>
+          <p>Another crucial segment involved filming the second generation—Clara's teenage daughter, Sofia (named for the researcher in the third film, in a nod to the series' fictional internal history). Sofia speaks fluent English, excels in school, and feels completely American, yet she feels a profound sense of responsibility for her mother's happiness and frequently struggles with her sense of inherited guilt.</p>
+          
+          <p>The camera captures her quietly tutoring her mother in English pronunciation late at night, a role reversal that powerfully illustrates the sacrifices and shifts in family dynamics that underpin a successful "new beginning."</p>
+        </div>
+
+        <div class="text-block">
+          <h3>Seeds of Hope</h3>
+          <p>The crew's ultimate conclusion, documented in their final production notes, was that the journey to the border is only the prelude; the true test of endurance is the years spent trying to turn survival into life. <em>Anchor and Horizon</em> concludes not with a resolution, but with a quiet sense of continuation.</p>
+          
+          <p>The final shot is a slow pan across a community garden tended by the subjects—a space where they plant seeds from their home countries, waiting for a harvest in unfamiliar soil. It is a metaphor for the entire series: the seeds of hope, transplanted and struggling, but determined to grow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSQoOAooU94hzayMSvuNqUmRUapQxrNoJIsqqLsSizeJ5uQnxjEY7" crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Intersection Observer for autoplay videos
+      function initVideoAutoplay() {
+        if ('IntersectionObserver' in window) {
+          const videoElements = document.querySelectorAll('.video-container video');
+          
+          const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+              const video = entry.target;
+              
+              if (entry.isIntersecting) {
+                // Video entered viewport
+                video.play().catch(error => {
+                  console.log('Autoplay failed:', error);
+                });
+              } else {
+                // Video left viewport
+                video.pause();
+              }
+            });
+          }, {
+            threshold: 0.5  // Video should be 50% visible
+          });
+          
+          videoElements.forEach(video => {
+            observer.observe(video);
+          });
+        } else {
+          // Fallback for browsers without IntersectionObserver
+          console.log('IntersectionObserver not supported');
+        }
+      }
+
+      // 平滑滾動
+      $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        const target = $(this.getAttribute('href'));
+        if(target.length) {
+          $('html, body').stop().animate({
+            scrollTop: target.offset().top
+          }, 1000);
+        }
+      });
+
+      // 初始化影片自動播放
+      initVideoAutoplay();
+    });
+  </script>
+
+</body>
+</html>

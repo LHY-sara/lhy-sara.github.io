@@ -12,18 +12,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap" rel="stylesheet">
     <style>
-        /* 全站使用 Noto Serif TC Black */
+        /* 內文使用 Noto Sans TC */
         body {
-            font-family: 'Noto Serif TC Black', serif;
-            letter-spacing: 0.01rem;
+            font-family: 'Noto Sans TC', sans-serif;
         }
         
+        /* 標題使用 Noto Serif TC */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Noto Serif TC Black', serif;
         }
 
         .section {
-	min-height: 100vh;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -68,11 +68,13 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 1.5rem;
+	font-weight: 700;
 	color: white;
 	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 	opacity: 0;
 	white-space: nowrap;
 	pointer-events: none;
+	font-family: 'Noto Serif TC Black', serif;
 }
 
 #title-text {
@@ -80,256 +82,40 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: 2rem;
+	font-size: 2.0rem;
+	font-weight: 900;
 	color: white;
 	text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
 	opacity: 0;
 	white-space: nowrap;
 	pointer-events: none;
+	font-family: 'Noto Serif TC Black', serif;
 	transition: opacity 1s ease-in-out;
 }
+    </style>
 
-.feature-dossier {
-	background: #f7f1e6;
-	color: #2f1f14;
-	border-top: 1px solid #dacbbb;
-	border-bottom: 1px solid #dacbbb;
-	font-size: 0.95rem;
-	line-height: 1.8;
-}
 
-.feature-dossier h2,
-.feature-dossier h3,
-.feature-dossier h4,
-.feature-dossier h5 {
-	letter-spacing: 0.05rem;
-}
+</head>
 
-.section-kicker {
-	font-size: 0.78rem;
-	letter-spacing: 0.4rem;
-	text-transform: uppercase;
-	color: #a0683f;
-	margin-bottom: 1rem;
-}
+<body>
+    <div class="section vh-100 w-100 p-5" style="background-color:rgba(233, 217, 194)">
+            <h2>上一章節版面</h2></div>
+    </div>
+    <!-- progress bar -->
+    <div id="scroll-container" style="height:200vh; position: relative;">
+        <div id="outer">
+			<div id="statusbar">
+				<div id="typewriter-text"></div>
+				<div id="title-text">台灣感性的審美濾鏡</div>
+			</div>
+		</div>
+    </div>
 
-.lede-block {
-	background: #fffaf1;
-	border: 1px solid #d9c7b2;
-	border-radius: 18px;
-	padding: 2.5rem;
-	box-shadow: 0 18px 40px rgba(141, 120, 94, 0.18);
-}
+    <div id="next-section" class="section vh-100 w-100 p-5" style="background-color:rgba(236, 199, 109)">
+		<h2>訪談內容</h2>
+	</div>
 
-.lede-block .lede {
-	font-size: 1rem;
-	color: #5a4432;
-	margin-bottom: 1.2rem;
-}
 
-.dateline {
-	font-size: 0.78rem;
-	letter-spacing: 0.3rem;
-	color: #7d5c3c;
-	text-transform: uppercase;
-}
-
-.photo-essay-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	gap: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-.photo-card {
-	background: #fff;
-	border: 1px solid #dfcdb8;
-	border-radius: 18px;
-	box-shadow: 0 18px 36px rgba(109, 88, 61, 0.16);
-	overflow: hidden;
-}
-
-.photo-card img {
-	width: 100%;
-	height: 220px;
-	object-fit: cover;
-}
-
-.photo-caption {
-	padding: 1.4rem;
-	font-size: 0.88rem;
-	color: #5f4430;
-}
-
-.photo-credit {
-	display: block;
-	margin-top: 0.6rem;
-	font-size: 0.75rem;
-	letter-spacing: 0.2rem;
-	color: #9a7a56;
-	text-transform: uppercase;
-}
-
-.media-journal {
-	background: #fff;
-	border: 1px solid #d8c7b3;
-	border-radius: 24px;
-	padding: 2.25rem;
-	box-shadow: 0 20px 46px rgba(89, 70, 49, 0.18);
-	margin-top: 2.5rem;
-}
-
-.story-columns p {
-	font-size: 0.9rem;
-	color: #4d3525;
-	margin-bottom: 0.9rem;
-}
-
-.media-frame {
-	border-radius: 18px;
-	overflow: hidden;
-	border: 1px solid #c8b09a;
-	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-	background: #000;
-	position: relative;
-	aspect-ratio: 16 / 9;
-}
-
-.media-frame iframe {
-	width: 100%;
-	height: 100%;
-	border: 0;
-}
-
-.media-credit {
-	font-size: 0.75rem;
-	letter-spacing: 0.18rem;
-	text-transform: uppercase;
-	color: #957555;
-	margin-top: 0.6rem;
-}
-
-.audio-notes {
-	margin-top: 2.5rem;
-}
-
-.audio-note {
-	background: #fffdf7;
-	border: 1px solid #e0cfbc;
-	border-radius: 18px;
-	padding: 1.8rem;
-	box-shadow: 0 18px 32px rgba(109, 92, 69, 0.15);
-}
-
-.audio-note audio {
-	width: 100%;
-	margin-top: 0.8rem;
-}
-
-.tape-summary {
-	font-size: 0.82rem;
-	color: #70513a;
-	margin-top: 0.8rem;
-}
-
-.mini-stat {
-	font-size: 0.78rem;
-	letter-spacing: 0.3rem;
-	text-transform: uppercase;
-	color: #8c6a43;
-	margin-top: 1.2rem;
-}
-
-.news-divider {
-	height: 1px;
-	background: repeating-linear-gradient(90deg, #cbb69f, #cbb69f 14px, transparent 14px, transparent 26px);
-	opacity: 0.7;
-	margin: 3rem 0;
-}
-
-.observation-card {
-	background: #fdf7ee;
-	border: 1px solid #e1d1bf;
-	border-left: 5px solid #c48f53;
-	border-radius: 12px;
-	padding: 1.3rem;
-	font-size: 0.88rem;
-	box-shadow: 0 14px 30px rgba(118, 96, 66, 0.12);
-}
-
-.observation-card h5 {
-	font-size: 0.95rem;
-	margin-bottom: 0.4rem;
-}
-
-.fact-chip {
-	font-size: 0.75rem;
-	letter-spacing: 0.25rem;
-	text-transform: uppercase;
-	color: #8e6d48;
-	border-top: 1px solid #dbc5ad;
-	margin-top: 1rem;
-	padding-top: 0.5rem;
-}
-
-.dialogue-tapes {
-	background: #f4efe6;
-	border-top: 1px solid #d8c7b2;
-	font-size: 0.94rem;
-}
-
-.transcript-card {
-	background: #fff;
-	border: 1px solid #dccfbd;
-	border-radius: 18px;
-	padding: 1.8rem;
-	min-height: 260px;
-	box-shadow: 0 18px 38px rgba(114, 96, 70, 0.14);
-}
-
-.transcript-card.tw {
-	border-top: 6px solid #d7a155;
-}
-
-.transcript-card.kr {
-	border-top: 6px solid #93a7c4;
-}
-
-.label-pill {
-	display: inline-block;
-	padding: 0.2rem 0.9rem;
-	border-radius: 999px;
-	background: #efe4d6;
-	color: #6c4b2b;
-	font-size: 0.75rem;
-	letter-spacing: 0.25rem;
-	text-transform: uppercase;
-	margin-bottom: 0.6rem;
-}
-
-.transcript-card p {
-	font-size: 0.9rem;
-	line-height: 1.7;
-}
-
-.transcript-meta {
-	font-size: 0.78rem;
-	color: #7a5a3c;
-	letter-spacing: 0.12rem;
-	text-transform: uppercase;
-	margin-top: 1rem;
-}
-
-.reveal-on-scroll {
-	opacity: 0;
-	transform: translateY(60px);
-	transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.reveal-on-scroll.in-view {
-	opacity: 1;
-	transform: translateY(0);
-}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

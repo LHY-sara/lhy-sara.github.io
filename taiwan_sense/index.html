@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Noto+Serif+TC:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        /* 全站使用 Noto Serif TC Black */
+        body {
+            font-family: 'Noto Serif TC Black', serif;
+            letter-spacing: 0.01rem;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif TC Black', serif;
+        }
+
+        .section {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#outer {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	background-image: url(https://lhy-sara.github.io/as07/image03.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#statusbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-image: url(https://lhy-sara.github.io/as07/image05.png);
+	background-size: 100vw 100vh;
+	background-repeat: no-repeat;
+	background-position: left center;
+	overflow: hidden;
+	transition: position 0.3s ease;
+}
+
+#statusbar.sticky {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	z-index: 1000;
+}
+
+#typewriter-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.5rem;
+	color: white;
+	text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+	opacity: 0;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+#title-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 2rem;
+	color: white;
+	text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+	opacity: 0;
+	white-space: nowrap;
+	pointer-events: none;
+	transition: opacity 1s ease-in-out;
+}
+
+.feature-dossier {
+	background: #f7f1e6;
+	color: #2f1f14;
+	border-top: 1px solid #dacbbb;
+	border-bottom: 1px solid #dacbbb;
+	font-size: 0.95rem;
+	line-height: 1.8;
+}
+
+.feature-dossier h2,
+.feature-dossier h3,
+.feature-dossier h4,
+.feature-dossier h5 {
+	letter-spacing: 0.05rem;
+}
+
+.section-kicker {
+	font-size: 0.78rem;
+	letter-spacing: 0.4rem;
+	text-transform: uppercase;
+	color: #a0683f;
+	margin-bottom: 1rem;
+}
+
+.lede-block {
+	background: #fffaf1;
+	border: 1px solid #d9c7b2;
+	border-radius: 18px;
+	padding: 2.5rem;
+	box-shadow: 0 18px 40px rgba(141, 120, 94, 0.18);
+}
+
+.lede-block .lede {
+	font-size: 1rem;
+	color: #5a4432;
+	margin-bottom: 1.2rem;
+}
+
+.dateline {
+	font-size: 0.78rem;
+	letter-spacing: 0.3rem;
+	color: #7d5c3c;
+	text-transform: uppercase;
+}
+
+.photo-essay-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+.photo-card {
+	background: #fff;
+	border: 1px solid #dfcdb8;
+	border-radius: 18px;
+	box-shadow: 0 18px 36px rgba(109, 88, 61, 0.16);
+	overflow: hidden;
+}
+
+.photo-card img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+}
+
+.photo-caption {
+	padding: 1.4rem;
+	font-size: 0.88rem;
+	color: #5f4430;
+}
+
+.photo-credit {
+	display: block;
+	margin-top: 0.6rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.2rem;
+	color: #9a7a56;
+	text-transform: uppercase;
+}
+
+.media-journal {
+	background: #fff;
+	border: 1px solid #d8c7b3;
+	border-radius: 24px;
+	padding: 2.25rem;
+	box-shadow: 0 20px 46px rgba(89, 70, 49, 0.18);
+	margin-top: 2.5rem;
+}
+
+.story-columns p {
+	font-size: 0.9rem;
+	color: #4d3525;
+	margin-bottom: 0.9rem;
+}
+
+.media-frame {
+	border-radius: 18px;
+	overflow: hidden;
+	border: 1px solid #c8b09a;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+	background: #000;
+	position: relative;
+	aspect-ratio: 16 / 9;
+}
+
+.media-frame iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.media-credit {
+	font-size: 0.75rem;
+	letter-spacing: 0.18rem;
+	text-transform: uppercase;
+	color: #957555;
+	margin-top: 0.6rem;
+}
+
+.audio-notes {
+	margin-top: 2.5rem;
+}
+
+.audio-note {
+	background: #fffdf7;
+	border: 1px solid #e0cfbc;
+	border-radius: 18px;
+	padding: 1.8rem;
+	box-shadow: 0 18px 32px rgba(109, 92, 69, 0.15);
+}
+
+.audio-note audio {
+	width: 100%;
+	margin-top: 0.8rem;
+}
+
+.tape-summary {
+	font-size: 0.82rem;
+	color: #70513a;
+	margin-top: 0.8rem;
+}
+
+.mini-stat {
+	font-size: 0.78rem;
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+	color: #8c6a43;
+	margin-top: 1.2rem;
+}
+
+.news-divider {
+	height: 1px;
+	background: repeating-linear-gradient(90deg, #cbb69f, #cbb69f 14px, transparent 14px, transparent 26px);
+	opacity: 0.7;
+	margin: 3rem 0;
+}
+
+.observation-card {
+	background: #fdf7ee;
+	border: 1px solid #e1d1bf;
+	border-left: 5px solid #c48f53;
+	border-radius: 12px;
+	padding: 1.3rem;
+	font-size: 0.88rem;
+	box-shadow: 0 14px 30px rgba(118, 96, 66, 0.12);
+}
+
+.observation-card h5 {
+	font-size: 0.95rem;
+	margin-bottom: 0.4rem;
+}
+
+.fact-chip {
+	font-size: 0.75rem;
+	letter-spacing: 0.25rem;
+	text-transform: uppercase;
+	color: #8e6d48;
+	border-top: 1px solid #dbc5ad;
+	margin-top: 1rem;
+	padding-top: 0.5rem;
+}
+
+.dialogue-tapes {
+	background: #f4efe6;
+	border-top: 1px solid #d8c7b2;
+	font-size: 0.94rem;
+}
+
+.transcript-card {
+	background: #fff;
+	border: 1px solid #dccfbd;
+	border-radius: 18px;
+	padding: 1.8rem;
+	min-height: 260px;
+	box-shadow: 0 18px 38px rgba(114, 96, 70, 0.14);
+}
+
+.transcript-card.tw {
+	border-top: 6px solid #d7a155;
+}
+
+.transcript-card.kr {
+	border-top: 6px solid #93a7c4;
+}
+
+.label-pill {
+	display: inline-block;
+	padding: 0.2rem 0.9rem;
+	border-radius: 999px;
+	background: #efe4d6;
+	color: #6c4b2b;
+	font-size: 0.75rem;
+	letter-spacing: 0.25rem;
+	text-transform: uppercase;
+	margin-bottom: 0.6rem;
+}
+
+.transcript-card p {
+	font-size: 0.9rem;
+	line-height: 1.7;
+}
+
+.transcript-meta {
+	font-size: 0.78rem;
+	color: #7a5a3c;
+	letter-spacing: 0.12rem;
+	text-transform: uppercase;
+	margin-top: 1rem;
+}
+
+.reveal-on-scroll {
+	opacity: 0;
+	transform: translateY(60px);
+	transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal-on-scroll.in-view {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!--jQuery CDN Link should be here-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+$(document).ready(function () {
+	var container = $("#outer").parent();
+	var max_scroll = container.height() - $(window).height();
+	var container_top = container.offset().top;
+	var isSticky = false;
+	var typewriterStarted = false;
+	var typewriterCompleted = false;
+	var titleTextShown = false;
+	var shouldUnstick = false;
+	var typewriterText = "你眼中的台灣街景是什麼模樣？";
+
+	// 打字機效果函數
+	function typeWriter(text, element, index) {
+		if (index < text.length) {
+			$(element).text($(element).text() + text.charAt(index));
+			setTimeout(function() {
+				typeWriter(text, element, index + 1);
+			}, 150); // 每個字的延遲時間（毫秒）
+		} else {
+			// 打字機效果完成
+			typewriterCompleted = true;
+		}
+	}
+
+	$(window).scroll(function () {
+		var scrolled = $(window).scrollTop();
+		var relative_scroll = scrolled - container_top;
+
+		// 當捲動進入容器範圍且尚未捲出時
+		if (relative_scroll >= 0 && relative_scroll <= max_scroll) {
+			// 計算進度百分比 (0-100)
+			var progress = (relative_scroll / max_scroll) * 100;
+			$("#statusbar").css({
+				width: progress + "%"
+			});
+			// 移除sticky狀態並重置所有狀態
+			if (isSticky || shouldUnstick) {
+				$("#statusbar").removeClass("sticky");
+				isSticky = false;
+				$("#typewriter-text").css("opacity", "0").text("");
+				$("#title-text").css("opacity", "0");
+				typewriterStarted = false;
+				typewriterCompleted = false;
+				titleTextShown = false;
+				shouldUnstick = false;
+			}
+		} else if (relative_scroll < 0) {
+			// 尚未進入容器
+			$("#statusbar").css({ width: "0%" });
+			if (isSticky || shouldUnstick || typewriterStarted) {
+				$("#statusbar").removeClass("sticky");
+				isSticky = false;
+				$("#typewriter-text").css("opacity", "0").text("");
+				$("#title-text").css("opacity", "0");
+				typewriterStarted = false;
+				typewriterCompleted = false;
+				titleTextShown = false;
+				shouldUnstick = false;
+			}
+		} else {
+			// 已完全捲過容器
+			// 計算超出容器後繼續捲動的距離
+			var extraScroll = relative_scroll - max_scroll;
+			var typewriterTrigger = 50; // 開始打字機效果的距離
+			var titleTrigger = 150; // 顯示title-text的距離
+			var unstickTrigger = 300; // 解除sticky的距離
+			
+			// 階段1: 變成sticky並開始打字機效果
+			if (!shouldUnstick) {
+				if (!isSticky) {
+					$("#statusbar").addClass("sticky").css({ width: "100%" });
+					isSticky = true;
+				}
+				
+				if (extraScroll > typewriterTrigger && !typewriterStarted) {
+					typewriterStarted = true;
+					$("#typewriter-text").css("opacity", "1");
+					typeWriter(typewriterText, "#typewriter-text", 0);
+				}
+				
+				// 階段2: 打字機完成後，顯示title-text
+				if (extraScroll > titleTrigger && !titleTextShown && typewriterCompleted) {
+					titleTextShown = true;
+					$("#typewriter-text").css("opacity", "0"); // 淡出打字機文字
+					setTimeout(function() {
+						$("#title-text").css("opacity", "1"); // 淡入標題文字
+					}, 300);
+				}
+				
+				// 階段3: title-text顯示後，解除sticky讓它隨頁面捲動
+				if (titleTextShown && extraScroll > unstickTrigger) {
+					shouldUnstick = true;
+					$("#statusbar").removeClass("sticky");
+					isSticky = false;
+				}
+			}
+		}
+	});
+});
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>憂鬱情緒檢測 | Depression Scale Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Banner Section -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>憂鬱情緒檢測</h1>
+            <p class="hero-subtitle">關心自己的情緒健康，從了解開始</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; color: #636e72;">本量表可協助您快速檢視近期的情緒狀態</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2d3436" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+            </svg>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- Instructions & Scoring Guide -->
+        <section class="glass-card instruction-card">
+            <h2>測驗說明</h2>
+            <p class="instruction-text">請回想<strong>最近一星期內（包括今天）</strong>，您對下列語句感到困擾或發生的頻率/程度。</p>
+
+            <div class="scoring-guide">
+                <div class="score-item">
+                    <span class="score-badge">0 分</span>
+                    <span class="score-desc">沒有或極少<br><small>(少於 1 天)</small></span>
+                </div>
+                <div class="score-item">
+                    <span class="score-badge">1 分</span>
+                    <span class="score-desc">有時<br><small>(1-2 天)</small></span>
+                </div>
+                <div class="score-item">
+                    <span class="score-badge">2 分</span>
+                    <span class="score-desc">時常<br><small>(3-4 天)</small></span>
+                </div>
+                <div class="score-item">
+                    <span class="score-badge">3 分</span>
+                    <span class="score-desc">常常或總是<br><small>(5-7 天)</small></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Question List -->
+        <section class="glass-card question-list-card">
+            <h2>評量問題清單</h2>
+            <div class="list-hint-box"
+                style="background: rgba(79, 172, 254, 0.1); padding: 15px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #4facfe;">
+                <p style="font-weight: 500; color: #2d3436;">計分規則：</p>
+                <p style="font-size: 0.95rem; color: #636e72;">下列共有 18 題，請針對每一題符合的狀況給予 0~3 分，最後將所有分數加總。</p>
+            </div>
+            <ol class="question-list">
+                <li>我常常覺得想哭</li>
+                <li>我覺得心情不好</li>
+                <li>我覺得比以前容易發脾氣</li>
+                <li>我睡不好</li>
+                <li>我覺得不想吃東西</li>
+                <li>我覺得胸口悶悶的</li>
+                <li>我覺得不快樂</li>
+                <li>我覺得身體疲勞虛弱</li>
+                <li>我覺得很煩</li>
+                <li>我覺得記憶力變差</li>
+                <li>我覺得做事無法專心</li>
+                <li>我覺得想事情或做事比以前慢</li>
+                <li>我覺得比以前沒信心</li>
+                <li>我覺得自己很沒用</li>
+                <li>我覺得想死</li>
+                <li>我覺得不能從生活中感覺到樂趣</li>
+                <li>我覺得身體不舒服（如頭痛、頭暈、心跳加快、肚子痛...）</li>
+                <li>我覺得自己對別人沒有用處</li>
+            </ol>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="glass-card calculator-card">
+            <header>
+                <h2>查看結果</h2>
+                <p class="subtitle">輸入您計算的總分，了解目前的情緒狀態</p>
+            </header>
+
+            <div class="input-section">
+                <label for="score-input">您的總分</label>
+                <div class="input-wrapper">
+                    <input type="number" id="score-input" placeholder="0" min="0" max="100">
+                    <button id="analyze-btn">分析結果</button>
+                </div>
+            </div>
+
+            <div id="result-container" class="result-container hidden">
+                <div class="result-icon" id="result-icon"></div>
+                <h3 id="result-title"></h3>
+                <p id="result-description"></p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>注意：本測驗結果僅供參考，不能作為醫療診斷依據。</p>
+        <p>若您感到嚴重不適，請務必尋求專業醫師或心理師的協助。</p>
+        <p class="copyright">© 2025 Depression Scale Calculator</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

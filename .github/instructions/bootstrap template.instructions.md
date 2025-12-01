@@ -13,6 +13,9 @@ Design your HTML structure as follows firstly:
 <div id="tofix1" class="bg-danger w-100" style="height:100px"></div>
 <div class="bg-light w-100 vh-100"></div>
 <div class="bg-dark w-100 vh-100"></div>
+<div class="vh-100 w-100 bg-primary text-white p-5"></div>
+<div class="bg-dark w-100 vh-100"></div>
+<div class="container vh-100 p-5"></div>
 ```
 
 Prompt used to generate this page:
@@ -24,18 +27,33 @@ Prompt used to generate this page:
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+ <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style>
 
-    <title>Hello, world!</title>
+    </style>
+
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    
+  <div class="vh-100 w-100 bg-primary text-white p-5">
+    <h1>Hello, world!</h1></div>
+  <div class="bg-dark w-100 vh-100"></div>
+  <div class="container vh-100 p-5"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+  <!--jQuery CDN Link should be here-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script>
+        
+        </script>
 
   </body>
 </html>

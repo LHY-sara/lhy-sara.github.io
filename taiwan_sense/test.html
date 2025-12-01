@@ -296,6 +296,10 @@
             <div id="shutter-5" class="shutter-panel absolute inset-0 bg-purple-900/20 backdrop-hue-rotate-15 translate-x-full flex items-center justify-center">
                 <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem;">韓國導遊</h2>
             </div>
+            <!-- 6. Urban Design Scholar -->
+            <div id="shutter-6" class="shutter-panel absolute inset-0 bg-teal-900/20 backdrop-opacity-80 translate-y-full flex items-center justify-center">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem;">都市設計學者</h2>
+            </div>
         </div>
     </section>
 
@@ -403,6 +407,27 @@
                         <p style="text-indent: 2em;">導遊的職責不只是指出景點，而是幫助遊客調整他們的視角，讓他們用當地人的眼光去欣賞街景。當他們開始看見台灣街景的獨特美麗時，我的工作就完成了。</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Interview 6: 都市設計學者 -->
+        <div class="row flex w-full" style="min-height: 100vh;">
+            <div class="col md:w-1/2 w-full py-24 px-10 md:px-12 flex flex-col justify-center" style="background-color: rgb(233,217,194);">
+                <div style="margin-bottom: 3rem;">
+                    <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">都市規劃學者</p>
+                    <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">姓名</h3>
+                </div>
+                <div class="p-5 md:p-6 rounded-lg" style="background-color: rgba(236,199,109, 0.15); backdrop-filter: blur(8px);">
+                    <div class="space-y-5 text-base md:text-lg leading-relaxed" style="color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif;">
+                        <p style="text-indent: 2em;">都市設計不僅是建築與空間的問題，更深層地反映了城市規劃的哲學與權力。台灣街景的「混雜」源於其獨特的發展歷程—高密度、多元地權、文化疊層。</p>
+                        <p style="text-indent: 2em;">相比韓國的「集中式規劃」，台灣採取了更分散、更有機的成長模式。這導致了視覺上的複雜性，但也保留了在地特色與人文溫度。我們不應該用歐洲或東亞先進城市的標準來批評台灣街景。</p>
+                        <p style="text-indent: 2em;">我的研究主張重新定義「美麗街景」。美不是均質與秩序，也可以是多元與活力。台灣的街景教我們，包容性的都市設計，往往比完美的視覺效果更有價值。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col md:w-1/2 w-full sticky top-0 h-screen flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1080&auto=format&fit=crop" 
+                     class="w-full h-full object-cover" alt="都市設計學者">
             </div>
         </div>
     </section>
@@ -603,7 +628,8 @@
             document.getElementById('shutter-2'),
             document.getElementById('shutter-3'),
             document.getElementById('shutter-4'),
-            document.getElementById('shutter-5')
+            document.getElementById('shutter-5'),
+            document.getElementById('shutter-6')
         ];
 
         window.addEventListener('scroll', () => {
@@ -630,6 +656,10 @@
             // Phase 5 (0.85 - 1.0): Shutter 5 enters from right
             const phase5Progress = Math.max(0, Math.min(1, (scrollProgress - 0.85) / 0.15));
             shutters[4].style.transform = `translateX(${(1 - phase5Progress) * 100}%)`;
+
+            // Phase 6 (1.0 - 1.2): Shutter 6 enters from bottom
+            const phase6Progress = Math.max(0, Math.min(1, (scrollProgress - 1.0) / 0.2));
+            shutters[5].style.transform = `translateY(${(1 - phase6Progress) * 100}%)`;
         });
 
         // --- Interactive Comparison Logic ---

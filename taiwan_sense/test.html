@@ -203,12 +203,12 @@
             </div>
 
             <!-- Background Layers -->
-            <div id="shutter-bg-1" class="shutter-panel absolute inset-0 bg-orange-900/10 backdrop-sepia-[.4] translate-x-full"></div>
-            <div id="shutter-bg-2" class="shutter-panel absolute inset-0 bg-blue-900/10 backdrop-contrast-125 translate-y-full"></div>
-            <div id="shutter-bg-3" class="shutter-panel absolute inset-0 bg-red-900/20 backdrop-grayscale translate-x-[-100%] border-r border-white/20"></div>
-            <div id="shutter-bg-4" class="shutter-panel absolute inset-0 bg-green-900/10 backdrop-saturate-150 translate-y-[-100%]"></div>
-            <div id="shutter-bg-5" class="shutter-panel absolute inset-0 bg-purple-900/10 backdrop-hue-rotate-15 translate-x-full"></div>
-            <div id="shutter-bg-6" class="shutter-panel absolute inset-0 bg-teal-900/10 backdrop-opacity-80 translate-y-full"></div>
+            <div id="shutter-bg-1" class="shutter-panel absolute inset-0 bg-orange-500/40 backdrop-sepia-[.6] translate-x-full"></div>
+            <div id="shutter-bg-2" class="shutter-panel absolute inset-0 bg-blue-600/45 backdrop-contrast-150 translate-y-full"></div>
+            <div id="shutter-bg-3" class="shutter-panel absolute inset-0 bg-red-600/40 backdrop-grayscale-[.8] translate-x-[-100%] border-r border-white/20"></div>
+            <div id="shutter-bg-4" class="shutter-panel absolute inset-0 bg-green-600/40 backdrop-saturate-200 translate-y-[-100%]"></div>
+            <div id="shutter-bg-5" class="shutter-panel absolute inset-0 bg-purple-600/40 backdrop-hue-rotate-30 translate-x-full"></div>
+            <div id="shutter-bg-6" class="shutter-panel absolute inset-0 bg-teal-600/25 backdrop-brightness-75 translate-y-full"></div>
 
             <!-- Text Layers (Z-Index Higher) -->
             <div id="shutter-text-1" class="shutter-panel absolute inset-0 bg-transparent translate-x-full flex items-start justify-start pt-20 pl-8 pointer-events-none z-10">
@@ -287,9 +287,10 @@
                 </div>
                 <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
                     <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                        <div class="flex-none">
+                        <div class="flex-none relative">
+                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-orange-500/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">首爾漢陽大學｜臺大法律系交換生</p>
-                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">Park Min-Ji</h3>
+                            <h3 class="font-bold leading-tight serif relative z-10" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">Park Min-Ji</h3>
                         </div>
                         <div id="i1-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
                             <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
@@ -338,9 +339,10 @@
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
                 <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
                     <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                        <div class="flex-none">
+                        <div class="flex-none relative">
+                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-blue-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺師大國文系學生</p>
-                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">邱苡安</h3>
+                            <h3 class="font-bold leading-tight serif relative z-10" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">邱苡安</h3>
                         </div>
                         <div id="i2-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
                             <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
@@ -430,19 +432,20 @@
         <section id="i3-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
                 <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1571162239033-0143c6d20352?q=80&w=1080&auto=format&fit=crop" 
-                         class="absolute inset-0 m-auto w-[90%] h-[90%] object-cover" alt="台灣攝影師">
+                    <img src="https://lhy-sara.github.io/taiwan_sense/image09.jpg" 
+                         class="w-[90%] h-auto object-contain" alt="台灣攝影師">
                 </div>
                 <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
                     <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-12 w-full">
-                        <div class="flex-none">
+                        <div class="flex-none relative">
+                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-red-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺灣攝影師</p>
-                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem;color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">張適</h3>
+                            <h3 class="font-bold leading-tight serif relative z-10" style="font-size: 3rem;color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">張適</h3>
                         </div>
-                        <div id="i3-quote-bubble" class="p-4 rounded-2xl flex-1 relative max-w-xl ml-auto" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
+                        <div id="i3-quote-bubble" class="p-4 rounded-2xl flex-1 relative max-w-2xl ml-auto" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
                             <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
                             <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
-                                「臺灣感性必須帶有一點觀光的凝視 ， 單純的紀實跟臺灣感性是不一樣的。」
+                                「你們現在才在紅這個臺灣感性，其實就是我們一直在做的啊。」
                             </p>
                         </div>
                     </div>
@@ -476,9 +479,10 @@
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
                 <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
                     <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                        <div class="flex-none">
+                        <div class="flex-none relative">
+                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-yellow-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺師大大眾傳播所教授</p>
-                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">蔡如音</h3>
+                            <h3 class="font-bold leading-tight serif relative z-10" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">蔡如音</h3>
                         </div>
                         <div id="i4-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
                             <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
@@ -541,9 +545,10 @@
                     
                     <!-- Header (固定不動) -->
                     <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                        <div class="flex-none">
-                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">韓國導遊</p>
-                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">尹智沿</h3>
+                        <div class="flex-none relative">
+                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-purple-600/40 -z-10 blur-md"></div>
+                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">南韓導遊</p>
+                            <h3 class="font-bold leading-tight serif relative z-10" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">尹智沿</h3>
                         </div>
                         <div id="i5-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
                             <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
@@ -607,9 +612,10 @@
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
                 <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
                     <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                        <div class="flex-none">
+                        <div class="flex-none relative">
+                            <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-teal-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺大建築與城鄉研究所所長</p>
-                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">康旻杰</h3>
+                            <h3 class="font-bold leading-tight serif relative z-10" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">康旻杰</h3>
                         </div>
                         <div id="i6-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
                             <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -164,7 +164,7 @@
                 
                 <div class="opacity-0 transition-opacity duration-1000 serif text-center px-4 flex flex-col items-center" id="intro-main-title" style="text-shadow: 3px 3px 10px rgba(0,0,0,0.8); transform: translateY(-50px);">
                     <p class="md:text-base tracking-widest" style="font-size: 2.5rem; color: white; letter-spacing: 0.15em; margin: 0; line-height: 1;">CHAPTER 2</p>
-                    <h1 class="tracking-widest text-white" style="font-size:5rem; margin: 6rem 0 0 0; line-height: 1.4; opacity: 0.8;">
+                    <h1 class="tracking-widest text-white" style="font-size:4.5rem; margin: 6rem 0 0 0; line-height: 1.4;">
                         審美濾鏡：臺灣感性的文化差異
                     </h1>
                 </div>
@@ -188,32 +188,46 @@
                 <p class="text-sm md:text-base uppercase tracking-widest" style="color: rgb(101,132,101); font-weight: 600; letter-spacing: 0.2em;">PREFACE</p>
                 <div class="w-16 h-1 mx-auto mt-3" style="background-color: rgb(236,199,109);"></div>
             </div>
-            <p class="text-base md:text-lg text-left" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em; text-indent: 2em;">
+            <p class="text-base md:text-lg text-left" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
                 當我們談論「街景感性」時，文化背景如何塑造了我們對臺灣城市風景的理解？本期報導邀請四位擁有不同文化視角的觀察者，透過他們的眼光，揭示同一條街道如何被賦予不同的意義。從韓國學生的新鮮視角，到在地攝影師的深刻觀察，每一個凝視都是一面審美的濾鏡。
             </p>
         </div>
     </section>
 
     <!-- 2. Sticky Shutter Section -->
-    <section id="multi-gaze" class="relative h-[400vh]" style="background-color: rgb(233,217,194);">
+    <section id="multi-gaze" class="relative h-[600vh]" style="background-color: rgb(233,217,194);">
         <div class="sticky top-0 h-screen overflow-hidden flex items-center justify-center">
-            <div id="shutter-1" class="shutter-panel absolute inset-0 bg-orange-900/20 backdrop-sepia-[.4] translate-x-full flex items-start justify-start pt-20 pl-8">
-                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem; margin-left: 120px;">韓國外籍生</h2>
+            <!-- Base Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://lhy-sara.github.io/taiwan_sense/image01.JPG" class="w-full h-full object-cover" alt="Street View">
             </div>
-            <div id="shutter-2" class="shutter-panel absolute inset-0 bg-blue-900/20 backdrop-contrast-125 translate-y-full flex items-end justify-end pb-20 pr-8">
-                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem; margin-right: 120px;">哈韓台灣人</h2>
+
+            <!-- Background Layers -->
+            <div id="shutter-bg-1" class="shutter-panel absolute inset-0 bg-orange-900/10 backdrop-sepia-[.4] translate-x-full"></div>
+            <div id="shutter-bg-2" class="shutter-panel absolute inset-0 bg-blue-900/10 backdrop-contrast-125 translate-y-full"></div>
+            <div id="shutter-bg-3" class="shutter-panel absolute inset-0 bg-red-900/20 backdrop-grayscale translate-x-[-100%] border-r border-white/20"></div>
+            <div id="shutter-bg-4" class="shutter-panel absolute inset-0 bg-green-900/10 backdrop-saturate-150 translate-y-[-100%]"></div>
+            <div id="shutter-bg-5" class="shutter-panel absolute inset-0 bg-purple-900/10 backdrop-hue-rotate-15 translate-x-full"></div>
+            <div id="shutter-bg-6" class="shutter-panel absolute inset-0 bg-teal-900/10 backdrop-opacity-80 translate-y-full"></div>
+
+            <!-- Text Layers (Z-Index Higher) -->
+            <div id="shutter-text-1" class="shutter-panel absolute inset-0 bg-transparent translate-x-full flex items-start justify-start pt-20 pl-8 pointer-events-none z-10">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 3rem; margin-left: 120px;">韓國交換生</h2>
             </div>
-            <div id="shutter-3" class="shutter-panel absolute inset-0 bg-gray-900/40 backdrop-grayscale translate-x-[-100%] flex items-start justify-end pt-20 pr-8 border-r border-white/20">
-                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem; margin-right: 120px;">台灣攝影師</h2>
+            <div id="shutter-text-2" class="shutter-panel absolute inset-0 bg-transparent translate-y-full flex items-end justify-end pb-[20vh] pr-[15vw] pointer-events-none z-10">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 3rem;">哈韓臺灣人</h2>
             </div>
-            <div id="shutter-4" class="shutter-panel absolute inset-0 bg-pink-900/10 backdrop-saturate-150 translate-y-[-100%] flex items-end justify-start pb-20 pl-8">
-                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem; margin-left: 120px;">文化研究學者</h2>
+            <div id="shutter-text-3" class="shutter-panel absolute inset-0 bg-transparent translate-x-[-100%] flex items-start justify-end pt-[18vh] pr-8 pointer-events-none z-10">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 3rem; margin-right: 120px;">臺灣攝影師</h2>
             </div>
-            <div id="shutter-5" class="shutter-panel absolute inset-0 bg-purple-900/20 backdrop-hue-rotate-15 translate-x-full flex items-center justify-center">
-                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem;">韓國導遊</h2>
+            <div id="shutter-text-4" class="shutter-panel absolute inset-0 bg-transparent translate-y-[-100%] flex items-end justify-start pb-20 pl-[12vw] pointer-events-none z-10">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 3rem;">文化研究學者</h2>
             </div>
-            <div id="shutter-6" class="shutter-panel absolute inset-0 bg-teal-900/20 backdrop-opacity-80 translate-y-full flex items-center justify-center">
-                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 4rem;">都市設計學者</h2>
+            <div id="shutter-text-5" class="shutter-panel absolute inset-0 bg-transparent translate-x-full flex items-start justify-start pt-[30vh] pl-[25vw] pointer-events-none z-10">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 3rem;">韓國導遊</h2>
+            </div>
+            <div id="shutter-text-6" class="shutter-panel absolute inset-0 bg-transparent translate-y-full flex items-end justify-end pb-[35vh] pr-[40vw] pointer-events-none z-10">
+                <h2 class=" font-bold text-white drop-shadow-lg serif" style="font-size: 3rem;">都市設計學者</h2>
             </div>
         </div>
     </section>
@@ -222,133 +236,303 @@
     <section style="background-color: rgb(233,217,194);">
         
         <!-- Interview 1: Minji -->
-        <div class="row flex w-full" style="min-height: 100vh;">
-            <div class="col md:w-2/5 w-full sticky top-0 h-screen flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
-                <img src="https://images.unsplash.com/photo-1616050274574-65834b830c8c?q=80&w=1080&auto=format&fit=crop" 
-                     class="w-full h-full object-cover" alt="韓國外籍生">
-            </div>
-            <div class="col md:w-3/5 w-full py-40 px-10 md:px-12 flex flex-col justify-center" style="background-color: rgb(233,217,194);">
-                <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                    <div class="flex-none">
-                        <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">韓國外籍生</p>
-                        <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">Minji</h3>
-                    </div>
-                    <div id="i1-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
-                        <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
-                        <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
-                            「臺灣感性跟《想見你》的氛圍很像——青春、學生、友情、夏天會浮現在我腦海中。」
-                        </p>
+        <section id="i1-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
+            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 m-auto w-[90%] h-[90%]">
+                        <!-- Image 15 -->
+                        <div class="i1-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-100 flex items-center justify-center">
+                            <div class="relative max-w-full max-h-full">
+                                <img src="https://lhy-sara.github.io/taiwan_sense/image15.png" class="block w-auto h-auto max-w-full max-h-full" alt="Image 15">
+                                <div class="absolute bottom-4 left-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                                    圖片來源：Minji提供
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Image 17 -->
+                        <div class="i1-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 flex items-center justify-center">
+                            <div class="relative max-w-full max-h-full">
+                                <img src="https://lhy-sara.github.io/taiwan_sense/image17.png" class="block w-auto h-auto max-w-full max-h-full" alt="Image 17">
+                                <div class="absolute bottom-4 left-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                                    圖片來源：Minji提供
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Image 14 -->
+                        <div class="i1-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 flex items-center justify-center">
+                            <div class="relative max-w-full max-h-full">
+                                <img src="https://lhy-sara.github.io/taiwan_sense/image14.png" class="block w-auto h-auto max-w-full max-h-full" alt="Image 14">
+                                <div class="absolute bottom-4 left-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                                    圖片來源：Minji提供
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Image 12 -->
+                        <div class="i1-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0 flex items-center justify-center">
+                            <div class="relative max-w-full max-h-full">
+                                <img src="https://lhy-sara.github.io/taiwan_sense/image12.JPG" class="block w-auto h-auto max-w-full max-h-full" alt="Image 12">
+                                <div class="absolute bottom-4 left-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                                    圖片來源：Minji提供
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Image 13 -->
+                        <div class="i1-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image13.png" class="w-full h-full object-cover" alt="Image 13">
+                            <div class="absolute bottom-4 left-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                                圖片來源：Minji提供
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="p-6 md:p-8 rounded-lg" style="background-color: rgba(236,199,109, 0.15); backdrop-filter: blur(8px);">
-                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                        <p style="text-indent: 2em;">來到台灣已經三年了，每一條街道都有新的發現。起初我被台灣街景的混雜感所困惑—老舊與現代交錯、傳統招牌與便利商店相鄰—但漸漸地，我學會欣賞這種無序中的和諧。</p>
-                        <p style="text-indent: 2em;">在首爾，街道被精心設計，一切都有既定的位置。而台灣則像一幅正在進行中的畫作，每個角落都訴說著不同的故事。我用我的相機記錄這些故事，因為這些尋常的景象，對我來說都閃閃發光。</p>
-                        <p style="text-indent: 2em;">街景不只是背景，它是城市的靈魂。台灣的街景教會我看見美，不是在完美中，而是在生活本身。</p>
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                        <div class="flex-none">
+                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">首爾漢陽大學｜臺大法律系交換生</p>
+                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">Park Min-Ji</h3>
+                        </div>
+                        <div id="i1-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
+                            <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
+                            <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
+                                「臺灣感性跟《想見你》的氛圍很像——青春、學生、友情、夏天會浮現在我腦海中。」
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relative w-full flex-1 flex flex-col justify-center overflow-hidden">
+                        <div class="i1-text-window w-full h-full relative rounded-t-lg overflow-hidden" style="background-color: rgb(233,217,194);">
+                            <div id="i1-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>白色方格玻璃窗、水藍色清新牆面，門邊擺放著兩三盆翠綠植栽，這裡是臺南中西區的銀同社區，2013年透過「歷史街區及歷史老屋振興補助計畫」，將歷經70年歲月的西藥房老屋搖身一變，改建為散發文藝氣息的陶藝文創館「小半樓」。不過真正讓韓國交換生Minji不惜千里也想親眼一睹這棟老屋風采的關鍵，在於它是2019年風靡全亞洲的神劇《想見你》拍攝地，也是她對臺灣展開浪漫嚮往的起點。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>「對我來說，臺灣感性的代表畫面就是《想見你》，那些青春、學生、友情、夏天的形象。」Minji來自首爾漢陽大學，選擇到臺大交換，就是因為這裡的校園風景，與她心目中期待的臺灣校園的青春氛圍如出一轍。她認為，臺灣感性描繪的是一種難以言喻、對臺灣當地生活風格產生的特有情感。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>除了朝聖女主角打工的唱片行「小半樓」外，Minji也踩點劇中出現過的各種經典場景，從主角一行人常光顧的鍋燒意麵店，到女主舅舅經營的32咖啡廳，臺南到臺北，受到影視作品的影響，臺灣許多縣市都逐漸成為韓國人熱門的旅遊勝地。Minji認為，隨著愈來愈多韓國人對臺灣有興趣，「臺灣感性」一詞自然開始流行起來，成為社群媒體上的熱門標籤。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>細究臺灣有別於韓國的獨特風景，Minji認為臺灣建築的外觀非常多樣化。她提到，在韓國，建築物的流行風格會持續好幾年，因此走在街上，視野所及的建築多保有一致的設計；但臺灣的街景顏色更為繽紛，鄰近的建築設計風格可能各有差異，是屬於臺灣日常氛圍的美感。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>「我覺得臺灣感性可以成為臺灣的文化認同。」來到臺灣後，Minji感受到印象深刻的在地文化，來自人們親切的善意。初來乍到的語言隔閡並未成為交流阻礙，她遇到的臺灣人許多會主動與她交談、協助與引導她的需求。這些經驗，也都一點一滴凝聚她對臺灣人與這片土地的印象，形塑出屬於她心目中的「臺灣感性」。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Interview 2: 邱苡安 -->
-        <div class="row flex w-full" style="min-height: 100vh;">
-            <div class="col md:w-3/5 w-full py-24 px-10 md:px-12 flex flex-col justify-center" style="background-color: rgb(233,217,194);">
-                <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                    <div class="flex-none">
-                        <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">國立臺灣師範大學國文系學生</p>
-                        <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">邱苡安</h3>
+        <section id="i2-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
+            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                        <div class="flex-none">
+                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺師大國文系學生</p>
+                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">邱苡安</h3>
+                        </div>
+                        <div id="i2-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
+                            <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
+                            <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
+                                「臺灣感性讓臺灣人反思，為什麼別人可以看到我們漂亮的地方。」
+                            </p>
+                        </div>
                     </div>
-                    <div id="i2-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
-                        <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
-                        <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
-                            「臺灣感性讓臺灣人去反思，為什麼別人可以看到我們漂亮的地方。」
-                        </p>
+                    <div class="relative w-full flex-1 flex flex-col justify-center overflow-hidden">
+                        <div class="i2-text-window w-full h-full relative rounded-t-lg overflow-hidden" style="background-color: rgb(233,217,194);">
+                            <div id="i2-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>深灰高領露肩長袖上衣、黑色休閒寬褲、皮製報童帽、黑白帆布鞋，極簡配色與層次感單品非常符合時下流行的韓式街頭穿搭，邱苡安是一名從小熱愛Kpop、對韓語及韓國流行文化如數家珍、喜歡透過拍照和影音記錄生活的臺灣大學生。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>「我覺得臺灣感性很大一部分，是粉絲社群互動推進你認識這個國家。」邱苡安解釋，許多韓國的偶像、歌手來臺時，喜歡拍一些街景照片，如站在便利商店前的影像，而吸引粉絲之間熱烈討論。當心愛的偶像到訪臺灣，粉絲會盡全力推薦各種在地人才熟知的美食、品牌、景點，希望讓偶像留下難忘的回憶。她舉例，一般韓國人熟知的手搖品牌為幸福堂，但在粉絲社群中，五十嵐、龜記等品牌才是常出現在推薦名單中的關鍵字。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>這些互動形塑了韓國人對臺灣熱情、溫暖、貼近生活的印象，而這樣的「臺灣感性」在街道景觀中尤其能凸顯特色。第一次聽到「臺灣感性」這個名詞，邱苡安腦中浮現的是道路上停著機車、有些雜亂不一的景象，或是在狹窄巷弄間，一束陽光灑落的溫暖氛圍。她認為，臺灣的街景本來就不差，只是需要在地人自己去發現。她會欣賞一些攝影師的作品，可能是不起眼的小角落或高處的視角，透過鏡頭發掘臺灣的美。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>而在韓國，邱苡安喜歡將鏡頭聚焦在帶給她新奇感的事物，如藍色的路標招牌、建物外觀、當地美食、或是色調鮮明的海景風光。「我想努力去找有沒有可能跟臺灣很不一樣的地方。」在首爾，她觀察到建築大多經過規劃，整體色調呈現黑、白、灰等色系，相較臺灣給人一點較冷漠的氛圍；不過在釜山，她感受到的是更自然的海岸風情，說不上來到底和臺灣的海有何差異，粼粼波光與色彩繽紛的小鎮街屋卻能讓她一眼沉醉其中。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>「就是一種新奇的感覺，跟我們去到韓國是一樣的概念。」邱苡安為臺灣感性下了註解，對於這股從韓國流行回臺灣的風潮，她感到有些荒唐，因為外國人喜歡才發現臺灣的美是值得反思的現象，臺灣街景確實仍有待改善的垃圾、空汙等問題，但漂亮的景色也隨處可見，這種溫暖的「感性」可能隱藏在小巷一隅屋宅、或是浮現於手繪真摯的街角裝飾中，充滿生活感與人情味。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>不過，邱苡安也不全然否定這種經由他人更認識自身國家的心態，透過一層審美濾鏡去凝視異地風貌，也是促進不同文化背景的人們展開真誠交流的窗口。「我認識的韓國人，他們都不知道臺灣人很多都會講韓文，很驚訝也很感謝自己的國家能被喜歡。」不是一開始就了解韓國的文化魅力而喜歡韓國，邱苡安說，她是因為先喜歡了偶像，想要了解偶像們在說什麼，從語言開始一點一滴深入認識這個國家，才能看見這裡吸引她的風景。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="p-5 md:p-6 rounded-lg" style="background-color: rgba(236,199,109, 0.15); backdrop-filter: blur(8px);">
-                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                        <p style="text-indent: 2em;">看韓劇改變了我對美學的理解。首爾的街道乾淨、有序、充滿設計感。相比之下，台北的街景顯得有些混亂，但那不是缺陷。</p>
-                        <p style="text-indent: 2em;">我開始意識到，不同文化的街景反映的是不同的價值觀。韓國強調秩序與效率，台灣則展現活力與包容。兩者都美麗，只是美麗的方式不同。</p>
-                        <p style="text-indent: 2em;">現在我看台灣的街景，不再想著「如果能像首爾就好了」，反而開始欣賞台灣獨有的生活質感。這種視角的轉變，讓我重新愛上了自己的城市。</p>
+                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 m-auto w-[90%] h-[90%]">
+                        <!-- Image 33: 臺灣 -->
+                        <div class="i2-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-100">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image33.jpg" class="w-full h-full object-cover" alt="Image 33">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">臺灣</div>
+                        </div>
+                        <!-- Image 31: 臺灣 -->
+                        <div class="i2-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image31.jpg" class="w-full h-full object-cover" alt="Image 31">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">臺灣</div>
+                        </div>
+                        <!-- Image 25: 韓國 -->
+                        <div class="i2-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image25.jpg" class="w-full h-full object-cover" alt="Image 25">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">韓國</div>
+                        </div>
+                        <!-- Image 27: 韓國 -->
+                        <div class="i2-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image27.jpg" class="w-full h-full object-cover" alt="Image 27">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">韓國</div>
+                        </div>
+                        <!-- Image 28: 臺灣 -->
+                        <div class="i2-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image28.jpg" class="w-full h-full object-cover" alt="Image 28">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">臺灣</div>
+                        </div>
+                        <!-- Image 29: 韓國 -->
+                        <div class="i2-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image29.jpg" class="w-full h-full object-cover" alt="Image 29">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">韓國</div>
+                        </div>
+                        <div class="absolute bottom-4 right-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                            圖片來源：邱苡安提供
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col md:w-2/5 w-full sticky top-0 h-screen flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
-                <img src="https://images.unsplash.com/photo-1534448177492-6d6c60253151?q=80&w=1080&auto=format&fit=crop" 
-                     class="w-full h-full object-cover" alt="哈韓台灣人">
-            </div>
-        </div>
+        </section>
 
         <!-- Interview 3: 張適 -->
-        <div class="row flex w-full" style="min-height: 100vh;">
-            <div class="col md:w-2/5 w-full sticky top-0 h-screen flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
-                <img src="https://images.unsplash.com/photo-1571162239033-0143c6d20352?q=80&w=1080&auto=format&fit=crop" 
-                     class="w-full h-full object-cover" alt="台灣攝影師">
-            </div>
-            <div class="col md:w-3/5 w-full py-24 px-10 md:px-12 flex flex-col justify-center" style="background-color: rgb(233,217,194);">
-                <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-8 w-full">
-                    <div class="flex-none">
-                        <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺灣攝影師</p>
-                        <h3 class="font-bold leading-tight serif" style="font-size: 3rem;color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">張適</h3>
+        <section id="i3-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
+            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1571162239033-0143c6d20352?q=80&w=1080&auto=format&fit=crop" 
+                         class="absolute inset-0 m-auto w-[90%] h-[90%] object-cover" alt="台灣攝影師">
+                </div>
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-12 w-full">
+                        <div class="flex-none">
+                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺灣攝影師</p>
+                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem;color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">張適</h3>
+                        </div>
+                        <div id="i3-quote-bubble" class="p-4 rounded-2xl flex-1 relative max-w-xl ml-auto" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
+                            <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
+                            <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
+                                「臺灣感性必須帶有一點觀光的凝視 ， 單純的紀實跟臺灣感性是不一樣的。」
+                            </p>
+                        </div>
                     </div>
-                    <div id="i3-quote-bubble" class="p-4 rounded-2xl flex-1 relative max-w-xl ml-auto" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
-                        <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
-                        <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
-                            「臺灣感性必須帶有一點觀光的凝視 ， 單純的紀實跟臺灣感性是不一樣的。」
-                        </p>
+                    <div class="relative w-full flex-1 flex flex-col justify-center overflow-hidden">
+                        <div class="i3-text-window w-full h-full relative rounded-t-lg overflow-hidden" style="background-color: rgb(233,217,194);">
+                            <div id="i3-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>我的鏡頭捕捉台灣街景已經二十年了。每一次的快門按下，都是我對這塊土地的對話。我喜歡拍攝那些被忽視的角落—斑駁的牆面、昏黃的路燈、行人的背影。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>這些元素組合在一起，展現出台灣獨特的光影與故事。許多人說台灣街景缺乏美感，但我認為那是因為他們沒有學會用對的眼光去看。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>攝影教會我，美不是客觀的存在，而是主觀的發現。當我按下快門的那一刻，我就創造了一個視角，一個看待台灣的新方式。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="p-5 md:p-6 rounded-lg" style="background-color: rgba(236,199,109, 0.15); backdrop-filter: blur(8px);">
-                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                        <p style="text-indent: 2em;">我的鏡頭捕捉台灣街景已經二十年了。每一次的快門按下，都是我對這塊土地的對話。我喜歡拍攝那些被忽視的角落—斑駁的牆面、昏黃的路燈、行人的背影。</p>
-                        <p style="text-indent: 2em;">這些元素組合在一起，展現出台灣獨特的光影與故事。許多人說台灣街景缺乏美感，但我認為那是因為他們沒有學會用對的眼光去看。</p>
-                        <p style="text-indent: 2em;">攝影教會我，美不是客觀的存在，而是主觀的發現。當我按下快門的那一刻，我就創造了一個視角，一個看待台灣的新方式。</p>
-                    </div>
-                </div>
             </div>
-        </div>
+        </section>
 
         <!-- Interview 4: 蔡如音 -->
-        <div class="row flex w-full" style="min-height: 100vh;">
-            <div class="col md:w-3/5 w-full py-24 px-10 md:px-12 flex flex-col justify-center" style="background-color: rgb(233,217,194);">
-                <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
-                    <div class="flex-none">
-                        <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">國立臺灣師範大學大傳所教授</p>
-                        <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">蔡如音</h3>
+        <section id="i4-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
+            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                        <div class="flex-none">
+                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺師大大眾傳播所教授</p>
+                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">蔡如音</h3>
+                        </div>
+                        <div id="i4-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
+                            <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
+                            <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
+                                「臺灣感性成立要有一個『距離』，可能是一個濾鏡或是臺灣與韓國的生活距離。」
+                            </p>
+                        </div>
                     </div>
-                    <div id="i4-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
-                        <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
-                        <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
-                            「臺灣感性成立要有一個『距離』，可能是一個濾鏡或是臺灣與韓國的生活距離。」
-                        </p>
+                    <div class="relative w-full flex-1 flex flex-col justify-center overflow-hidden">
+                        <div class="i4-text-window w-full h-full relative rounded-t-lg overflow-hidden" style="background-color: rgb(233,217,194);">
+                            <div id="i4-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>街景是城市文化的視覺表現。台灣的街景反映了其複雜的歷史—日本殖民、國民政府遷台、全球化浪潮—這些影響層疊在物理空間上。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>相比之下，韓國在戰後進行了大規模的都市規劃，創造了更統一的視覺文化。台灣則保留了更多的歷史痕跡，這使得街景更加多元，但也更難被理解為「美」。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>我的研究表明，對街景的審美判斷，往往受到文化背景與權力關係的影響。我們需要批判性地思考，為什麼某些街景被認為是美的，而其他的則被忽視。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="p-5 md:p-6 rounded-lg" style="background-color: rgba(236,199,109, 0.15); backdrop-filter: blur(8px);">
-                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                        <p style="text-indent: 2em;">街景是城市文化的視覺表現。台灣的街景反映了其複雜的歷史—日本殖民、國民政府遷台、全球化浪潮—這些影響層疊在物理空間上。</p>
-                        <p style="text-indent: 2em;">相比之下，韓國在戰後進行了大規模的都市規劃，創造了更統一的視覺文化。台灣則保留了更多的歷史痕跡，這使得街景更加多元，但也更難被理解為「美」。</p>
-                        <p style="text-indent: 2em;">我的研究表明，對街景的審美判斷，往往受到文化背景與權力關係的影響。我們需要批判性地思考，為什麼某些街景被認為是美的，而其他的則被忽視。</p>
-                    </div>
+                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1605218427368-3631385794d0?q=80&w=1080&auto=format&fit=crop" 
+                         class="absolute inset-0 m-auto w-[90%] h-[90%] object-cover" alt="文化研究學者">
                 </div>
             </div>
-            <div class="col md:w-2/5 w-full sticky top-0 h-screen flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
-                <img src="https://images.unsplash.com/photo-1605218427368-3631385794d0?q=80&w=1080&auto=format&fit=crop" 
-                     class="w-full h-full object-cover" alt="文化研究學者">
-            </div>
-        </div>
+        </section>
 
         <!-- Interview 5: 韓國導遊 (RESTORED LAYOUT with SCROLLYTELLING TEXT) -->
         <!-- 外層 Section 設為 600vh 以支援內部文字的捲動切換 -->
-        <section id="interview-5-track" class="relative" style="height: 600vh; background-color: rgb(233,217,194);">
+        <section id="interview-5-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
             <!-- Sticky Container: 模擬原始檔案的左右分割，但高度固定為 100vh -->
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
                 
                 <!-- Left: Sticky Image (原始位置) -->
-                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
-                    <div class="absolute inset-0 w-full h-full">
+                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 m-auto w-[90%] h-[90%]">
                         <img src="https://lhy-sara.github.io/taiwan_sense/image19.jpg" class="i5-bg-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100" alt="Image 19">
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image22.jpg" class="i5-bg-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" alt="Image 22">
                         <img src="https://lhy-sara.github.io/taiwan_sense/image21.jpg" class="i5-bg-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" alt="Image 21">
                         <img src="https://lhy-sara.github.io/taiwan_sense/image07.jpg" class="i5-bg-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" alt="Image 07">
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image20.jpg" class="i5-bg-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-0" alt="Image 20">
+                        <div class="absolute bottom-4 left-4 z-10 text-white text-sm tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                            圖片來源：尹智沿提供
+                        </div>
                     </div>
                 </div>
                 
@@ -378,36 +562,36 @@
                                 
                                 <!-- P1 -->
                                 <div class="text-block">
-                                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p style="text-indent: 2em;">具備十年帶團資歷，韓國導遊尹智沿因2020年碰上新冠疫情而失業，決定開始經營YouTube頻道「韓國導遊 Withing」，與導遊夥伴正訓一起用中文介紹韓國觀光景點，分享給疫情間無法出國的遊客。隨著頻道逐漸在臺灣打開知名度，她也時常暢遊臺灣各地景點、開箱各種美食與餐廳，分享帶團時遇到的臺韓遊客經驗。</p>
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>具備十年帶團資歷，韓國導遊尹智沿因2020年碰上新冠疫情而失業，決定開始經營YouTube頻道「韓國導遊 Withing」，與導遊夥伴正訓一起用中文介紹韓國觀光景點，分享給疫情間無法出國的遊客。隨著頻道逐漸在臺灣打開知名度，她也時常暢遊臺灣各地景點、開箱各種美食與餐廳，分享帶團時遇到的臺韓遊客經驗。</p>
                                     </div>
                                 </div>
 
                                 <!-- P2 -->
                                 <div class="text-block">
-                                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p style="text-indent: 2em;">她認為，臺灣感性是一種臺灣獨特的氣氛，對許多韓國遊客而言，認識臺灣首先是從戲劇作品開始，如《不能說的秘密》、《我的少女時代》、《聽說》等，隨處可見的狹小巷弄、穿著純白校服的學生、宛如《想見你》電視劇的青春場景，就是對臺灣感性最貼切的詮釋。</p>
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>她認為，臺灣感性是一種臺灣獨特的氣氛，對許多韓國遊客而言，認識臺灣首先是從戲劇作品開始，如《不能說的秘密》、《我的少女時代》、《聽說》等，隨處可見的狹小巷弄、穿著純白校服的學生、宛如《想見你》電視劇的青春場景，就是對臺灣感性最貼切的詮釋。</p>
                                     </div>
                                 </div>
 
                                 <!-- P3 -->
                                 <div class="text-block">
-                                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p style="text-indent: 2em;">從觀光旅遊角度理解「感性」，智沿觀察到無論韓國或臺灣，遊客們在追求的都是那些有別自身日常經驗的風景。「韓國現在越來越少看到復古感的建築物了。」她指出，臺灣相較韓國保留了較多歷史建築，且街景風貌能將現代與復古風格融合為一體，夜市小吃與城市裡也能感受到的溫暖人情味，種種皆是韓國人心之嚮往的體驗。</p>
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>從觀光旅遊角度理解「感性」，智沿觀察到無論韓國或臺灣，遊客們在追求的都是那些有別自身日常經驗的風景。「韓國現在越來越少看到復古感的建築物了。」她指出，臺灣相較韓國保留了較多歷史建築，且街景風貌能將現代與復古風格融合為一體，夜市小吃與城市裡也能感受到的溫暖人情味，種種皆是韓國人心之嚮往的體驗。</p>
                                     </div>
                                 </div>
 
                                 <!-- P4 -->
                                 <div class="text-block">
-                                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p style="text-indent: 2em;">有別於韓國遊客較常在冬天到訪臺灣，期待看到綠意盎然的自然風光，臺灣遊客去韓國最常記錄的景色，是在臺灣少見的銀白雪景、滿林楓紅、與櫻花綻放枝頭的畫面。除此之外，韓劇裡常見的上坡道路與巷子，也是臺灣人喜愛打卡拍照的地點。</p>
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>有別於韓國遊客較常在冬天到訪臺灣，期待看到綠意盎然的自然風光，臺灣遊客去韓國最常記錄的景色，是在臺灣少見的銀白雪景、滿林楓紅、與櫻花綻放枝頭的畫面。除此之外，韓劇裡常見的上坡道路與巷子，也是臺灣人喜愛打卡拍照的地點。</p>
                                     </div>
                                 </div>
 
                                 <!-- P5 -->
                                 <div class="text-block">
-                                    <div class="space-y-5" style="font-size: 1.6rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p style="text-indent: 2em;">「臺灣是去了一次後，就一直想去旅遊的國家。」智沿十年前第一次來臺灣，源自一張阿里山的照片令她結下與台灣的緣份。在她的眼中，臺灣擁有許多自然山林風景，在市區則混雜著各地文化交織形成的特有氛圍。而最重要的，是她在臺灣感受到的善良人情，足以讓她對這片土地一再駐足。</p>
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>「臺灣是去了一次後，就一直想去旅遊的國家。」智沿十年前第一次來臺灣，源自一張阿里山的照片令她結下與台灣的緣份。在她的眼中，臺灣擁有許多自然山林風景，在市區則混雜著各地文化交織形成的特有氛圍。而最重要的，是她在臺灣感受到的善良人情，足以讓她對這片土地一再駐足。</p>
                                     </div>
                                 </div>
                                 
@@ -419,25 +603,49 @@
         </section>
 
         <!-- Interview 6: 都市設計學者 -->
-        <div class="row flex w-full" style="min-height: 100vh;">
-            <div class="col md:w-3/5 w-full py-24 px-10 md:px-12 flex flex-col justify-center" style="background-color: rgb(233,217,194);">
-                <div style="margin-bottom: 3rem;">
-                    <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">都市規劃學者</p>
-                    <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">姓名</h3>
-                </div>
-                <div class="p-5 md:p-6 rounded-lg" style="background-color: rgba(236,199,109, 0.15); backdrop-filter: blur(8px);">
-                    <div class="space-y-5 text-base md:text-lg leading-relaxed" style="color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif;">
-                        <p style="text-indent: 2em;">都市設計不僅是建築與空間的問題，更深層地反映了城市規劃的哲學與權力。台灣街景的「混雜」源於其獨特的發展歷程—高密度、多元地權、文化疊層。</p>
-                        <p style="text-indent: 2em;">相比韓國的「集中式規劃」，台灣採取了更分散、更有機的成長模式。這導致了視覺上的複雜性，但也保留了在地特色與人文溫度。我們不應該用歐洲或東亞先進城市的標準來批評台灣街景。</p>
-                        <p style="text-indent: 2em;">我的研究主張重新定義「美麗街景」。美不是均質與秩序，也可以是多元與活力。台灣的街景教我們，包容性的都市設計，往往比完美的視覺效果更有價值。</p>
+        <section id="i6-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
+            <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                        <div class="flex-none">
+                            <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺大建築與城鄉研究所所長</p>
+                            <h3 class="font-bold leading-tight serif" style="font-size: 3rem; color: rgb(120,90,60); font-family: 'Noto Serif TC', serif;">康旻杰</h3>
+                        </div>
+                        <div id="i6-quote-bubble" class="p-4 rounded-2xl flex-1 relative" style="background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); min-width: 280px;">
+                            <div style="position: absolute; left: -8px; bottom: 20px; width: 16px; height: 16px; background-color: rgba(132, 118, 87, 0.15); backdrop-filter: blur(8px); transform: rotate(45deg);"></div>
+                            <p style="font-family: 'Noto Sans TC', sans-serif; color: rgb(176, 112, 33); font-size: 1.3rem; line-height: 1.95; margin: 0; font-style: italic; text-align: center; position: relative; z-index: 1;">
+                                「美不是均質與秩序，也可以是多元與活力。」
+                            </p>
+                        </div>
+                    </div>
+                    <div class="relative w-full flex-1 flex flex-col justify-center overflow-hidden">
+                        <div class="i6-text-window w-full h-full relative rounded-t-lg overflow-hidden" style="background-color: rgb(233,217,194);">
+                            <div id="i6-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>都市設計不僅是建築與空間的問題，更深層地反映了城市規劃的哲學與權力。台灣街景的「混雜」源於其獨特的發展歷程—高密度、多元地權、文化疊層。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>相比韓國的「集中式規劃」，台灣採取了更分散、更有機的成長模式。這導致了視覺上的複雜性，但也保留了在地特色與人文溫度。我們不應該用歐洲或東亞先進城市的標準來批評台灣街景。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>我的研究主張重新定義「美麗街景」。美不是均質與秩序，也可以是多元與活力。台灣的街景教我們，包容性的都市設計，往往比完美的視覺效果更有價值。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1080&auto=format&fit=crop" 
+                         class="absolute inset-0 m-auto w-[90%] h-[90%] object-cover" alt="都市設計學者">
+                </div>
             </div>
-            <div class="col md:w-2/5 w-full sticky top-0 h-screen flex items-center justify-center overflow-hidden" style="background-color: rgb(101,132,101);">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1080&auto=format&fit=crop" 
-                     class="w-full h-full object-cover" alt="都市設計學者">
-            </div>
-        </div>
+        </section>
     </section>
 
     <!-- Conclusion Parallax -->
@@ -449,9 +657,9 @@
         <div class="max-w-3xl" style="will-change: transform; position: relative; z-index: 10;" id="parallax-text-conclusion">
             <div class="text-center mb-8">
                 <p class="text-sm md:text-base uppercase tracking-widest" style="color: rgb(101,132,101); font-weight: 600; letter-spacing: 0.2em;">CONCLUSION</p>
-                <div class="w-16 h-1 mx-auto mt-3" style="background-color: rgb(101,132,101);"></div>
+                <div class="w-16 h-1 mx-auto mt-3" style="background-color: rgb(236,199,109);"></div>
             </div>
-            <h2 class="text-base md:text-lg text-center" style="font-size: 1.8rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">小結</h2>
+            <h2 class="text-base md:text-lg text-center" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">小結</h2>
         </div>
     </section>
 
@@ -460,39 +668,72 @@
         <h2 class="font-bold text-center mb-12 serif" style="font-size: 2.8rem; color: rgb(101,132,101); font-family: 'Noto Serif TC', serif; line-height: 1.6;">你看見的臺灣感性是什麼模樣？</h2>
         
         <div class="w-full max-w-6xl p-6 rounded-xl shadow-2xl mx-auto flex flex-col items-center" style="background-color: rgba(255,255,255, 0.8); border: 1px solid rgba(120,90,60, 0.3);">
-            <div class="relative aspect-video overflow-hidden mb-6 rounded w-full" style="background-color: #d4ccc0; max-height: 450px;">
-                <img id="user-edit-image" src="https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=2070&auto=format&fit=crop" 
-                     onerror="this.src='https://placehold.co/1000x600/333/FFF?text=Raw+Street'"
-                     class="w-full h-full object-cover" alt="Raw Street for Editing">
-                
-                <div class="absolute bottom-4 right-4 flex gap-2">
-                    <button id="prev-image-btn" class="px-2 py-1 text-lg font-bold transition-all hover:opacity-100" 
-                            style="color: rgb(101,132,101); opacity: 0.6; background-color: transparent;">
-                        &lt;
-                    </button>
-                    <button id="next-image-btn" class="px-2 py-1 text-lg font-bold transition-all hover:opacity-100" 
-                            style="color: rgb(101,132,101); opacity: 0.6; background-color: transparent;">
-                        &gt;
-                    </button>
+            <div class="flex items-end justify-center gap-10 mb-6 w-full pl-20">
+                <div id="filter-image-container" class="relative" style="display: inline-block; max-width: 100%;">
+                    <img id="user-edit-image" src="image01.JPG" 
+                         onerror="this.src='https://placehold.co/1000x600/333/FFF?text=Raw+Street'"
+                         class="block w-auto h-auto rounded" style="max-height: 450px;" alt="Raw Street for Editing">
+                    
+                    <div id="user-text-overlay" class="absolute pointer-events-none" style="top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); white-space: nowrap; font-weight: bold; font-family: 'Noto Serif TC', serif; letter-spacing: 0.2em;"></div>
                 </div>
+                
+                <button id="download-btn" class="p-3 rounded-full shadow-lg transition-transform hover:scale-110" style="background-color: rgb(101,132,101); color: white;" title="下載圖片">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M12 9.75v8.25m0 0-3-3m3 3 3-3m-3-12.75v6.75" />
+                    </svg>
+                </button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6 rounded-lg w-full" style="background-color: rgba(120,90,60, 0.1);">
-                <div class="space-y-3">
-                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">色溫 (Temperature)</label>
-                    <input type="range" id="range-sepia" min="-100" max="100" value="0" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 p-6 rounded-lg w-full" style="background-color: rgba(120,90,60, 0.1);">
+                <div class="space-y-3 text-center">
+                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">明暗度</label>
+                    <input type="range" id="range-brightness" min="50" max="150" value="100" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
                 </div>
-                <div class="space-y-3">
-                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">對比度 (Contrast)</label>
+                <div class="space-y-3 text-center">
+                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">對比度</label>
                     <input type="range" id="range-contrast" min="50" max="200" value="125" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
                 </div>
-                <div class="space-y-3">
-                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">飽和度 (Saturation)</label>
+                <div class="space-y-3 text-center">
+                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">色溫</label>
+                    <input type="range" id="range-sepia" min="-100" max="100" value="0" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
+                </div>
+                <div class="space-y-3 text-center">
+                    <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">飽和度</label>
                     <input type="range" id="range-saturate" min="0" max="200" value="100" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
                 </div>
             </div>
+
+            <div class="w-full p-6 rounded-lg mt-4 space-y-6" style="background-color: rgba(120,90,60, 0.1);">
+                <!-- Row 1: Text Input, Color, Size (1:1:2) -->
+                <div class="flex flex-col md:flex-row gap-8 w-full">
+                    <div class="space-y-3 text-center flex-1">
+                        <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">輸入文字</label>
+                        <input type="text" id="input-text" value="#臺灣感性" class="w-full p-2 rounded-lg border border-gray-300" style="background-color: rgba(255,255,255,0.8); color: rgb(120,90,60);">
+                    </div>
+                    <div class="space-y-3 text-center flex-1">
+                        <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">文字顏色</label>
+                        <input type="color" id="input-text-color" value="#ffffff" class="w-full h-10 rounded-lg cursor-pointer border-0 p-0" style="background-color: transparent;">
+                    </div>
+                    <div class="space-y-3 text-center flex-[2]">
+                        <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">文字大小</label>
+                        <input type="range" id="range-text-size" min="12" max="72" value="42" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
+                    </div>
+                </div>
+
+                <!-- Row 2: Position Controls -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                    <div class="space-y-3 text-center">
+                        <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">水平位置</label>
+                        <input type="range" id="range-text-x" min="0" max="100" value="50" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
+                    </div>
+                    <div class="space-y-3 text-center">
+                        <label class="text-base uppercase tracking-wider" style="color: rgb(120,90,60);">垂直位置</label>
+                        <input type="range" id="range-text-y" min="0" max="100" value="50" class="w-full h-2 rounded-lg appearance-none cursor-pointer" style="background-color: rgba(120,90,60, 0.3); accent-color: rgb(120,90,60);">
+                    </div>
+                </div>
+            </div>
             <div class="mt-4 text-center w-full">
-                <p id="filter-result-text" class="text-base" style="color: rgb(120,90,60);">調整滑桿，定義屬於你的街景感性</p>
+                <p id="filter-result-text" class="text-base" style="color: rgb(120,90,60);">調整滑桿，定義屬於你的感性</p>
             </div>
         </div>
     </section>
@@ -534,7 +775,7 @@
             if (globalProgress > 0.4 && !typewriterTextEl.dataset.typed) {
                 typewriterTextEl.dataset.typed = "true";
                 typewriterTextEl.style.opacity = 1;
-                typeWriter("你眼中的台灣街景是什麼模樣？", typewriterTextEl);
+                typeWriter("你眼中的臺灣街景是什麼模樣？", typewriterTextEl);
             } else if (globalProgress < 0.3) {
                 typewriterTextEl.innerText = "";
                 typewriterTextEl.dataset.typed = "";
@@ -599,79 +840,88 @@
             fadeObserver.observe(el);
         });
 
-        // --- NEW Logic for Interview 5 Scrollytelling ---
-        document.addEventListener('scroll', updateInterview5Scroll);
+        // --- NEW Logic for Scrollytelling (All Interviews) ---
+        const scrollySections = [
+            { trackId: 'i1-track', contentId: 'i1-scroll-content', windowClass: 'i1-text-window', images: ['.i1-bg-item'] },
+            { trackId: 'i2-track', contentId: 'i2-scroll-content', windowClass: 'i2-text-window', images: ['.i2-bg-item'] },
+            { trackId: 'i3-track', contentId: 'i3-scroll-content', windowClass: 'i3-text-window', images: [] },
+            { trackId: 'i4-track', contentId: 'i4-scroll-content', windowClass: 'i4-text-window', images: [] },
+            { trackId: 'interview-5-track', contentId: 'i5-scroll-content', windowClass: 'i5-text-window', images: ['.i5-bg-img'] },
+            { trackId: 'i6-track', contentId: 'i6-scroll-content', windowClass: 'i6-text-window', images: [] }
+        ];
 
-        function updateInterview5Scroll() {
-            const track = document.getElementById('interview-5-track');
-            const content = document.getElementById('i5-scroll-content');
-            const windowEl = document.querySelector('.i5-text-window');
-            
-            if (!track || !content || !windowEl) return;
-            
-            const rect = track.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            // Calculate progress
-            // The section is 400vh. Sticky is 100vh.
-            // Scrollable distance is 300vh.
-            
-            const scrollDistance = -rect.top;
-            const totalTrackHeight = rect.height - windowHeight;
-            
-            // If we haven't reached the section or passed it, we might still want to clamp
-            // But let's just calculate raw progress first
-            let progress = scrollDistance / totalTrackHeight;
-            progress = Math.max(0, Math.min(1, progress));
+        document.addEventListener('scroll', updateScrollytelling);
 
-            // Calculate translation
-            // We want to scroll from top (0px) to bottom (contentHeight - viewportHeight)
-            // But we want to add some padding so the last paragraph is fully visible
-            const contentHeight = content.offsetHeight;
-            const viewportHeight = windowEl.offsetHeight;
-            
-            if (contentHeight > viewportHeight) {
-                // Scrollable range
-                const maxTranslate = contentHeight - viewportHeight + 60; // +60 for bottom padding buffer
-                const translateY = progress * maxTranslate;
-                content.style.transform = `translateY(-${translateY}px)`;
-            } else {
-                content.style.transform = `translateY(0px)`;
-            }
-
-            // Image Switching Logic
-            const images = document.querySelectorAll('.i5-bg-img');
-            if (images.length > 0) {
-                // Divide progress into equal segments for each image
-                const segmentSize = 1 / images.length;
-                let activeIndex = Math.floor(progress / segmentSize);
-                // Clamp index to valid range (handle progress=1 case)
-                activeIndex = Math.min(activeIndex, images.length - 1);
+        function updateScrollytelling() {
+            scrollySections.forEach(section => {
+                const track = document.getElementById(section.trackId);
+                const content = document.getElementById(section.contentId);
+                const windowEl = document.querySelector('.' + section.windowClass);
                 
-                images.forEach((img, idx) => {
-                    if (idx === activeIndex) {
-                        img.classList.remove('opacity-0');
-                        img.classList.add('opacity-100');
-                    } else {
-                        img.classList.remove('opacity-100');
-                        img.classList.add('opacity-0');
+                if (!track || !content || !windowEl) return;
+                
+                const rect = track.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                const scrollDistance = -rect.top;
+                const totalTrackHeight = rect.height - windowHeight;
+                
+                let progress = scrollDistance / totalTrackHeight;
+                progress = Math.max(0, Math.min(1, progress));
+
+                const contentHeight = content.offsetHeight;
+                const viewportHeight = windowEl.offsetHeight;
+                
+                if (contentHeight > viewportHeight) {
+                    const maxTranslate = contentHeight - viewportHeight + 60; 
+                    const translateY = progress * maxTranslate;
+                    content.style.transform = `translateY(-${translateY}px)`;
+                } else {
+                    content.style.transform = `translateY(0px)`;
+                }
+
+                // Image Switching Logic
+                if (section.images.length > 0) {
+                    const images = track.querySelectorAll(section.images[0]);
+                    if (images.length > 0) {
+                        const segmentSize = 1 / images.length;
+                        let activeIndex = Math.floor(progress / segmentSize);
+                        activeIndex = Math.min(activeIndex, images.length - 1);
+                        
+                        images.forEach((img, idx) => {
+                            if (idx === activeIndex) {
+                                img.classList.remove('opacity-0');
+                                img.classList.add('opacity-100');
+                            } else {
+                                img.classList.remove('opacity-100');
+                                img.classList.add('opacity-0');
+                            }
+                        });
                     }
-                });
-            }
+                }
+            });
         }
         // 初始化一次
-        updateInterview5Scroll();
+        updateScrollytelling();
 
 
         // --- Sticky Shutter Logic ---
         const sectionMultiGaze = document.getElementById('multi-gaze');
-        const shutters = [
-            document.getElementById('shutter-1'),
-            document.getElementById('shutter-2'),
-            document.getElementById('shutter-3'),
-            document.getElementById('shutter-4'),
-            document.getElementById('shutter-5'),
-            document.getElementById('shutter-6')
+        const shutterBgs = [
+            document.getElementById('shutter-bg-1'),
+            document.getElementById('shutter-bg-2'),
+            document.getElementById('shutter-bg-3'),
+            document.getElementById('shutter-bg-4'),
+            document.getElementById('shutter-bg-5'),
+            document.getElementById('shutter-bg-6')
+        ];
+        const shutterTexts = [
+            document.getElementById('shutter-text-1'),
+            document.getElementById('shutter-text-2'),
+            document.getElementById('shutter-text-3'),
+            document.getElementById('shutter-text-4'),
+            document.getElementById('shutter-text-5'),
+            document.getElementById('shutter-text-6')
         ];
 
         window.addEventListener('scroll', () => {
@@ -680,28 +930,34 @@
             const scrollProgress = -rect.top / (rect.height - window.innerHeight);
             
             // Phase 1
-            const phase1Progress = Math.max(0, Math.min(1, (scrollProgress - 0.05) / 0.2));
-            shutters[0].style.transform = `translateX(${(1 - phase1Progress) * 100}%)`;
+            const phase1Progress = Math.max(0, Math.min(1, (scrollProgress - 0.0) / 0.15));
+            shutterBgs[0].style.transform = `translateX(${(1 - phase1Progress) * 100}%)`;
+            shutterTexts[0].style.transform = `translateX(${(1 - phase1Progress) * 100}%)`;
             
             // Phase 2
-            const phase2Progress = Math.max(0, Math.min(1, (scrollProgress - 0.25) / 0.2));
-            shutters[1].style.transform = `translateY(${(1 - phase2Progress) * 100}%)`;
+            const phase2Progress = Math.max(0, Math.min(1, (scrollProgress - 0.15) / 0.15));
+            shutterBgs[1].style.transform = `translateY(${(1 - phase2Progress) * 100}%)`;
+            shutterTexts[1].style.transform = `translateY(${(1 - phase2Progress) * 100}%)`;
 
             // Phase 3
-            const phase3Progress = Math.max(0, Math.min(1, (scrollProgress - 0.45) / 0.2));
-            shutters[2].style.transform = `translateX(${-(1 - phase3Progress) * 100}%)`;
+            const phase3Progress = Math.max(0, Math.min(1, (scrollProgress - 0.30) / 0.15));
+            shutterBgs[2].style.transform = `translateX(${-(1 - phase3Progress) * 100}%)`;
+            shutterTexts[2].style.transform = `translateX(${-(1 - phase3Progress) * 100}%)`;
 
             // Phase 4
-            const phase4Progress = Math.max(0, Math.min(1, (scrollProgress - 0.65) / 0.2));
-            shutters[3].style.transform = `translateY(${-(1 - phase4Progress) * 100}%)`;
+            const phase4Progress = Math.max(0, Math.min(1, (scrollProgress - 0.45) / 0.15));
+            shutterBgs[3].style.transform = `translateY(${-(1 - phase4Progress) * 100}%)`;
+            shutterTexts[3].style.transform = `translateY(${-(1 - phase4Progress) * 100}%)`;
 
             // Phase 5
-            const phase5Progress = Math.max(0, Math.min(1, (scrollProgress - 0.85) / 0.15));
-            shutters[4].style.transform = `translateX(${(1 - phase5Progress) * 100}%)`;
+            const phase5Progress = Math.max(0, Math.min(1, (scrollProgress - 0.60) / 0.15));
+            shutterBgs[4].style.transform = `translateX(${(1 - phase5Progress) * 100}%)`;
+            shutterTexts[4].style.transform = `translateX(${(1 - phase5Progress) * 100}%)`;
 
             // Phase 6
-            const phase6Progress = Math.max(0, Math.min(1, (scrollProgress - 1.0) / 0.2));
-            shutters[5].style.transform = `translateY(${(1 - phase6Progress) * 100}%)`;
+            const phase6Progress = Math.max(0, Math.min(1, (scrollProgress - 0.75) / 0.15));
+            shutterBgs[5].style.transform = `translateY(${(1 - phase6Progress) * 100}%)`;
+            shutterTexts[5].style.transform = `translateY(${(1 - phase6Progress) * 100}%)`;
         });
 
         // --- Parallax Logic ---
@@ -740,9 +996,32 @@
         // --- User Edit Logic ---
         const userImg = document.getElementById('user-edit-image');
         const rSepia = document.getElementById('range-sepia');
+        const rBrightness = document.getElementById('range-brightness');
         const rContrast = document.getElementById('range-contrast');
         const rSaturate = document.getElementById('range-saturate');
         const resultText = document.getElementById('filter-result-text');
+
+        // Text Overlay Elements
+        const textOverlay = document.getElementById('user-text-overlay');
+        const inputText = document.getElementById('input-text');
+        const inputTextColor = document.getElementById('input-text-color');
+        const rangeTextSize = document.getElementById('range-text-size');
+        const rangeTextX = document.getElementById('range-text-x');
+        const rangeTextY = document.getElementById('range-text-y');
+
+        function updateTextOverlay() {
+            textOverlay.innerText = inputText.value;
+            textOverlay.style.color = inputTextColor.value;
+            textOverlay.style.fontSize = `${rangeTextSize.value}px`;
+            textOverlay.style.left = `${rangeTextX.value}%`;
+            textOverlay.style.top = `${rangeTextY.value}%`;
+            textOverlay.style.transform = `translate(-${rangeTextX.value}%, -${rangeTextY.value}%)`;
+        }
+
+        [inputText, inputTextColor, rangeTextSize, rangeTextX, rangeTextY].forEach(input => {
+            input.addEventListener('input', updateTextOverlay);
+        });
+        updateTextOverlay();
 
         function updateUserFilter() {
             const tempValue = parseInt(rSepia.value);
@@ -764,7 +1043,8 @@
             
             const contrastValue = rContrast.value;
             const saturateValue = rSaturate.value;
-            userImg.style.filter = `${filterString} contrast(${contrastValue}%) saturate(${saturateValue}%)`;
+            const brightnessValue = rBrightness.value;
+            userImg.style.filter = `${filterString} contrast(${contrastValue}%) saturate(${saturateValue}%) brightness(${brightnessValue}%)`;
 
             if (Math.abs(tempValue) > 60 && contrastValue < 110) {
                 resultText.textContent = "當前風格：韓式復古感";
@@ -773,17 +1053,18 @@
             } else if (saturateValue > 150) {
                 resultText.textContent = "當前風格：強烈流行文化感";
             } else {
-                resultText.textContent = "調整滑桿，定義屬於你的街景感性。";
+                resultText.textContent = "調整滑桿，定義屬於你的感性。";
             }
         }
 
-        [rSepia, rContrast, rSaturate].forEach(input => {
+        [rSepia, rBrightness, rContrast, rSaturate].forEach(input => {
             input.addEventListener('input', updateUserFilter);
         });
         updateUserFilter();
 
         const imageGallery = [
-            'https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=2070&auto=format&fit=crop',
+            'image01.JPG',
+            'image04.jpg',
         ];
         let currentImageIndex = 0;
 
@@ -802,8 +1083,81 @@
             updateImageDisplay();
         }
 
-        document.getElementById('prev-image-btn').addEventListener('click', goToPrevImage);
-        document.getElementById('next-image-btn').addEventListener('click', goToNextImage);
+        const prevBtn = document.getElementById('prev-image-btn');
+        if (prevBtn) {
+            prevBtn.addEventListener('click', goToPrevImage);
+        }
+
+        const nextBtn = document.getElementById('next-image-btn');
+        if (nextBtn) {
+            nextBtn.addEventListener('click', goToNextImage);
+        }
+
+        // --- Download Logic (Canvas API) ---
+        document.getElementById('download-btn').addEventListener('click', () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const img = document.getElementById('user-edit-image');
+            
+            // Set canvas size to natural image size for full resolution
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+
+            // 1. Draw Image with Filter
+            // Use the inline style filter directly
+            ctx.filter = img.style.filter || 'none';
+            
+            // Draw the image
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            
+            // Reset filter for text
+            ctx.filter = 'none';
+
+            // 2. Draw Text
+            const textVal = document.getElementById('input-text').value;
+            const textSize = parseInt(document.getElementById('range-text-size').value);
+            const textX = parseInt(document.getElementById('range-text-x').value);
+            const textY = parseInt(document.getElementById('range-text-y').value);
+
+            // Calculate scale factor (Natural size / Displayed size)
+            const scale = canvas.width / img.width;
+
+            // Configure Font
+            const scaledFontSize = textSize * scale;
+            ctx.font = `bold ${scaledFontSize}px "Noto Serif TC", serif`;
+            ctx.fillStyle = document.getElementById('input-text-color').value;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Configure Shadow
+            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+            ctx.shadowBlur = 4 * scale;
+            ctx.shadowOffsetX = 2 * scale;
+            ctx.shadowOffsetY = 2 * scale;
+
+            // Letter Spacing (Modern Browsers)
+            if ('letterSpacing' in ctx) {
+                ctx.letterSpacing = "0.2em";
+            }
+
+            // Calculate Position
+            const xPos = (textX / 100) * canvas.width;
+            const yPos = (textY / 100) * canvas.height;
+
+            // Draw Text
+            ctx.fillText(textVal, xPos, yPos);
+
+            // 3. Download
+            try {
+                const link = document.createElement('a');
+                link.download = 'taiwan-sense-filter.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (e) {
+                console.error(e);
+                alert("無法下載圖片 (可能是跨域問題或瀏覽器限制)");
+            }
+        });
     </script>
 </body>
 </html>

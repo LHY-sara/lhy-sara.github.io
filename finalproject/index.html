@@ -233,13 +233,16 @@
     /* ---------- Header (keeps on top) ---------- */
 
     header{
-      position:fixed; left:0; right:0; top:0;
-      padding:10px 24px;
+      position:fixed; left:0; top:0;
+      right: auto;
+      width: auto;
+      padding: 8px 24px;
       min-height: 38px;
-      display:flex; justify-content:space-between; align-items:center;
+      display:flex; justify-content:center; align-items:center;
       z-index:100;
-      transition: background .3s;
+      transition: all .3s;
       background: transparent;
+      border-radius: 0 0 15px 0;
     }
     header .logo{
       font-family:'Noto Serif TC', serif;
@@ -247,10 +250,73 @@
       color:#2d3319;
       letter-spacing:.08em;
     }
-    header nav{ display:flex; gap:18px; }
-    header nav div{ cursor:pointer; color:rgba(45,51,25,0.7); font-size:.78rem; letter-spacing:.04em; }
+    
+    /* Sidebar Styles */
+    #nav-sidebar {
+        position: fixed;
+        top: 0;
+        left: -320px; /* Hidden initially */
+        width: 320px;
+        height: 100vh;
+        background: rgba(245, 240, 232, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+        z-index: 1001;
+        transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        padding: 80px 40px;
+        display: flex;
+        flex-direction: column;
+    }
+    #nav-sidebar.active {
+        left: 0;
+    }
+    #nav-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        padding: 5px;
+        transition: transform 0.3s;
+    }
+    #nav-close:hover {
+        transform: rotate(90deg);
+    }
+    #nav-sidebar nav {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    #nav-sidebar nav div {
+        cursor: pointer;
+        color: #2d3319;
+        font-size: 1.1rem;
+        letter-spacing: 0.05em;
+        font-family: 'Noto Serif TC', serif;
+        transition: all 0.3s;
+        padding-bottom: 5px;
+        border-bottom: 1px solid transparent;
+        position: relative;
+        width: fit-content;
+    }
+    #nav-sidebar nav div:hover {
+        color: #6b7c3c;
+        padding-left: 10px;
+    }
+    #nav-sidebar nav div::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #6b7c3c;
+        transition: width 0.3s;
+    }
+    #nav-sidebar nav div:hover::after {
+        width: 100%;
+    }
 
-    header.scrolled{ background: rgba(245,240,232,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+    header.scrolled{ background: rgba(245,240,232,0.8); backdrop-filter: blur(10px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
     /* ---------- Map Section (full screen) ---------- */
     #map-section{ width:100%; height:100vh; position:relative; }
@@ -1858,13 +1924,32 @@ section#section-daily.fullview,
 
   <!-- Header -->
   <header id="header">
-    <div class="logo">臺灣感性</div>
-    <nav>
-      <div data-target="chapter1">喚起記憶：臺灣感性的源起介紹</div>
-      <div data-target="chapter2">審美濾鏡：臺灣感性的文化差異</div>
-      <div data-target="meta-hero">後設反思：臺灣感性的自我審視</div>
-      <div data-target="epilogue">結語</div>
-    </nav>
+    <div class="logo-container" style="display: flex; align-items: center; gap: 15px;">
+        <div id="nav-toggle" style="cursor: pointer; display: flex; align-items: center; padding: 5px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12H21" stroke="#2d3319" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 6H21" stroke="#2d3319" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M3 18H21" stroke="#2d3319" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="logo" style="cursor: pointer;">臺灣感性</div>
+    </div>
+    
+    <!-- Navigation Sidebar -->
+    <div id="nav-sidebar">
+        <div id="nav-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="#2d3319" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 6L18 18" stroke="#2d3319" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <nav>
+            <div data-target="chapter1">喚起記憶：臺灣感性的源起介紹</div>
+            <div data-target="chapter2">審美濾鏡：臺灣感性的文化差異</div>
+            <div data-target="meta-hero">後設反思：臺灣感性的自我審視</div>
+            <div data-target="epilogue">結語</div>
+        </nav>
+    </div>
   </header>
 
   <!-- HASHTAG PAGE:  -->
@@ -2476,8 +2561,8 @@ section#section-daily.fullview,
         <!-- Interview 2: 邱苡安 -->
         <section id="i2-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
-                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-24 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-start gap-6 w-full">
                         <div class="flex-none relative">
                             <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-blue-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺師大國文系學生</p>
@@ -2573,12 +2658,16 @@ section#section-daily.fullview,
                 <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
                     <div class="relative w-[90%]">
                         <!-- Spacer Image for Aspect Ratio -->
-                        <img src="https://lhy-sara.github.io/taiwan_sense/image41.jpg" class="w-full h-auto opacity-0 pointer-events-none" alt="Spacer">
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image10.jpg" class="w-full h-auto opacity-0 pointer-events-none" alt="Spacer">
                         
+                        <!-- Image 10 -->
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image10.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100" alt="Image 10">
                         <!-- Image 41 -->
-                        <img src="https://lhy-sara.github.io/taiwan_sense/image41.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-100" alt="Image 41">
-                        <!-- Image 09 -->
-                        <img src="https://lhy-sara.github.io/taiwan_sense/image09.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 09">
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image41.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 41">
+                        <!-- Image 47 -->
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image47.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 47">
+                        <!-- Image 48 -->
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image48.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 48">
                         <!-- Image 39 -->
                         <img src="https://lhy-sara.github.io/taiwan_sense/image39.jpg" class="i3-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 39">
                         <!-- Image 42 -->
@@ -2608,7 +2697,7 @@ section#section-daily.fullview,
                             <div id="i3-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
                                 <div class="text-block">
                                     <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p>我的鏡頭捕捉臺灣街景已經二十年了。每一次的快門按下，都是我對這塊土地的對話。我喜歡拍攝那些被忽視的角落—斑駁的牆面、昏黃的路燈、行人的背影。</p>
+                                        <p>(待修)</p>
                                     </div>
                                 </div>
                                 <div class="text-block">
@@ -2631,8 +2720,8 @@ section#section-daily.fullview,
         <!-- Interview 4: 蔡如音 -->
         <section id="i4-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
-                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-24 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-start gap-6 w-full">
                         <div class="flex-none relative">
                             <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-yellow-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺師大大眾傳播所教授</p>
@@ -2650,7 +2739,12 @@ section#section-daily.fullview,
                             <div id="i4-scroll-content" class="absolute top-0 left-0 w-full p-6 md:p-8 space-y-8" style="will-change: transform;">
                                 <div class="text-block">
                                     <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
-                                        <p>街景是城市文化的視覺表現。臺灣的街景反映了其複雜的歷史—日本殖民、國民政府遷台、全球化浪潮—這些影響層疊在物理空間上。</p>
+                                        <p>懷抱看了十年日劇後的憧憬，蔡如音過去為進行文化研究的資料訪談與蒐集，曾在日本住了將近半年的時間，但那份經由影視媒體主導的文化想像，卻與她實際踏入當地生活時的感受產生巨大的落差。因此當談及臺灣感性，她認為這種由觀光客凝視之下對臺灣街景的著迷，與過去自己凝視日本時有著相似的情景，透過一種中介塑造出對異地的浪漫想像。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>不過細究臺灣感性的脈絡，蔡如音觀察到，年輕世代觀看街景的方式也與過去有所不同，更多人具備跨國穿梭在各地都市旅遊的經驗，加上各種攝影、媒體、娛樂產業的影響，人們透過影像在社群上建立出獨屬這個地方的風格或濾鏡，形塑成一種特定的街景美學。</p>
                                     </div>
                                 </div>
                                 <div class="text-block">
@@ -2665,6 +2759,11 @@ section#section-daily.fullview,
                                 </div>
                                 <div class="text-block">
                                     <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
+                                        <p>「我會拍樹、天空、路上的好看角落，但我覺得那完全不適合被稱為臺灣感性。」蔡如音翻找手機相簿裡的照片，從校園周邊正在施工的道路，到裝修公寓的鐵窗花，這些鏡頭少了觀光的凝視，更多記錄的是生活的日常片段。在她眼中，鐵窗花承載的是幼時住家附近可愛元素的記憶，因此拍照是具有意識的美學實踐，主動發掘臺灣在地的美感軌跡。</p>
+                                    </div>
+                                </div>
+                                <div class="text-block">
+                                    <div class="space-y-5" style="font-size: 1.3rem; color: rgb(120,90,60); font-family: 'Noto Sans TC', sans-serif; line-height: 1.95; letter-spacing: 0.05em;">
                                         <p>「臺灣人開始挪用這個標籤的時候，我會想還可以創造出什麼更豐富的意義。」臺灣感性為建立在視覺上的流行符號，透過網路擴散，蔡如音認為是一種有趣的符號連結，可以增加臺灣人對美感脈絡的討論，也能作為跨國的年輕世代互相溝通、交流或重新詮釋文化的媒介。不過她也指出，熱門標籤可能造成同質化的風險，比起透過文化政策快速包裝成觀光宣傳的手段，她更期待民間攤商能玩轉這個元素，展現貼近庶民日常的靈活生命力。</p>
                                     </div>
                                 </div>
@@ -2674,24 +2773,24 @@ section#section-daily.fullview,
                 </div>
                 <div class="col md:w-2/5 w-full h-full relative z-0 flex items-center justify-center overflow-hidden">
                     <div class="absolute inset-0 m-auto w-[90%] h-[90%]">
-                        <!-- Image 06: 臺灣 -->
+                        <!-- Image 37: 臺灣 -->
                         <div class="i4-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-100">
-                            <img src="https://lhy-sara.github.io/taiwan_sense/image06.jpg" class="w-full h-full object-cover" alt="Image 06">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image37.jpg" class="w-full h-full object-cover" alt="Image 37">
                             <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">臺灣</div>
-                        </div>
-                        <!-- Image 36: 韓國 -->
-                        <div class="i4-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
-                            <img src="https://lhy-sara.github.io/taiwan_sense/image36.jpg" class="w-full h-full object-cover" alt="Image 36">
-                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">韓國</div>
                         </div>
                         <!-- Image 35: 日本 -->
                         <div class="i4-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
                             <img src="https://lhy-sara.github.io/taiwan_sense/image35.jpg" class="w-full h-full object-cover" alt="Image 35">
                             <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">日本</div>
                         </div>
-                        <!-- Image 37: 臺灣 -->
+                        <!-- Image 36: 韓國 -->
                         <div class="i4-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
-                            <img src="https://lhy-sara.github.io/taiwan_sense/image37.jpg" class="w-full h-full object-cover" alt="Image 37">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image36.jpg" class="w-full h-full object-cover" alt="Image 36">
+                            <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">韓國</div>
+                        </div>
+                        <!-- Image 06: 臺灣 -->
+                        <div class="i4-bg-item absolute inset-0 w-full h-full transition-opacity duration-700 opacity-0">
+                            <img src="https://lhy-sara.github.io/taiwan_sense/image06.jpg" class="w-full h-full object-cover" alt="Image 06">
                             <div class="absolute top-4 left-4 z-10 text-white text-xl tracking-wider" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">臺灣</div>
                         </div>
                         <!-- Image 38: 臺灣 -->
@@ -2797,8 +2896,8 @@ section#section-daily.fullview,
         <!-- Interview 6: 都市設計學者 -->
         <section id="i6-track" class="relative" style="height: 300vh; background-color: rgb(233,217,194);">
             <div class="sticky top-0 h-screen w-full flex flex-col md:flex-row overflow-hidden">
-                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-12 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
-                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-end gap-6 w-full">
+                <div class="col md:w-3/5 w-full h-full flex flex-col justify-start pt-24 pb-0 px-10 md:px-12 relative z-10" style="background-color: rgb(233,217,194);">
+                    <div style="margin-bottom: 3rem;" class="flex-none flex flex-wrap items-start gap-6 w-full">
                         <div class="flex-none relative">
                             <div class="absolute -bottom-2 -left-2 w-8 h-8 rounded-full bg-teal-600/40 -z-10 blur-md"></div>
                             <p class="text-base md:text-lg tracking-widest uppercase" style="color: rgb(101,132,101); margin-bottom: 0.5rem; letter-spacing: 0.05em;">臺大建築與城鄉研究所所長</p>
@@ -2859,6 +2958,10 @@ section#section-daily.fullview,
                         <img src="https://lhy-sara.github.io/taiwan_sense/image43.jpg" class="i6-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 43">
                         <!-- Image 44 -->
                         <img src="https://lhy-sara.github.io/taiwan_sense/image44.jpg" class="i6-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 44">
+                        <!-- Image 45 -->
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image45.jpg" class="i6-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 45">
+                        <!-- Image 50 -->
+                        <img src="https://lhy-sara.github.io/taiwan_sense/image50.jpg" class="i6-bg-item absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0" alt="Image 50">
                     </div>
                 </div>
             </div>
@@ -3804,12 +3907,46 @@ section#section-daily.fullview,
     });
   }
 
-  document.querySelectorAll('header nav div').forEach(el => {
+  // Sidebar Toggle Logic
+  const navToggle = document.getElementById('nav-toggle');
+  const navClose = document.getElementById('nav-close');
+  const navSidebar = document.getElementById('nav-sidebar');
+  
+  function openNav() {
+      if(navSidebar) navSidebar.classList.add('active');
+  }
+  
+  function closeNav() {
+      if(navSidebar) navSidebar.classList.remove('active');
+  }
+  
+  if(navToggle) navToggle.addEventListener('click', openNav);
+  if(navClose) navClose.addEventListener('click', closeNav);
+  
+  // Close sidebar when clicking outside
+  document.addEventListener('click', function(event) {
+      if (navSidebar && navSidebar.classList.contains('active') && 
+          !navSidebar.contains(event.target) && 
+          !navToggle.contains(event.target)) {
+          closeNav();
+      }
+  });
+
+  // Navigation Links Logic (updated selector for sidebar)
+  document.querySelectorAll('#nav-sidebar nav div').forEach(el => {
     el.addEventListener('click', (e) => {
       const t = e.target.getAttribute('data-target');
       if (!t) return;
       const elTarget = document.getElementById(t);
-      if (elTarget) elTarget.scrollIntoView({ behavior: 'smooth' });
+      if (elTarget) {
+          // Use GSAP for smoother scrolling if available
+          if (typeof gsap !== 'undefined') {
+               gsap.to(window, {duration: 1.5, scrollTo: elTarget, ease: "power2.inOut"});
+          } else {
+              elTarget.scrollIntoView({ behavior: 'smooth' });
+          }
+      }
+      closeNav(); // Close sidebar after clicking a link
     });
   });
 

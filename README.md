@@ -4,3 +4,4 @@
 ## Updates
 - 2025-11-15 `taiwan_sense/index.html`: Added sticky blurred status bar with a looping typewriter prompt that appears after the progress section completes.
 - 2025-11-19 `map.html`: Implemented Bootstrap layout with sticky status bar plus horizontal population bars sorted by city size.
+- 2025-12-26 `Thefadingaura/index.html`: Added footer with credits for writing, interview, photography, and web design (Updated to English format).

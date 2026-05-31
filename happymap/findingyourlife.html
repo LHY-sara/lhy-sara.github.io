@@ -1014,6 +1014,11 @@
     /* ── 手機橫向（landscape）版面 ── */
     @media (max-width: 1024px) and (orientation: landscape) {
       #mobile-controls-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -1313,6 +1318,11 @@
     /* ── 一般手機（max-width 768px，不限方向）共用調整 ── */
     @media (max-width: 768px) {
       #mobile-controls-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -2113,7 +2123,7 @@
       const zoomControls = document.getElementById('zoom-controls');
       const minimap = document.getElementById('minimap-container');
 
-      const mobileLayout = window.matchMedia('(max-width: 1024px) and (orientation: landscape), (max-width: 768px)').matches;
+      const mobileLayout = window.matchMedia('(max-width: 1024px)').matches;
 
       if (mobileLayout) {
         if (filterBtn && filterBtn.parentElement !== dockLeft) dockLeft.appendChild(filterBtn);

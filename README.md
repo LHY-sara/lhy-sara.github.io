@@ -2,6 +2,7 @@
 # 羅卉昀 Luo, Hui-Yun
 
 ## Updates
+ 2026-05-31 `happymap/findingyourlife.html`: Removed the mobile top gap by top-aligning the map inside the mobile landscape stage.
  2026-05-31 `happymap/findingyourlife.html`: Widened the mobile icon popup panel slightly.
  2026-05-31 `happymap/findingyourlife.html`: Moved the app initialization off `load` and onto DOM ready so the start button works even when external embeds delay page load.
  2026-05-31 `happymap/findingyourlife.html`: Locked zoom controls on desktop too, releasing them only when the final guide line appears.

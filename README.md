@@ -2,13 +2,10 @@
 # 羅卉昀 Luo, Hui-Yun
 
 ## Updates
-2026-06-01 `happymap/findingyourlife.html`: Forced the mobile icon popup into a bottom-sheet layout on small screens so it stays inside the map/viewport on 6.5-inch phones.
 2026-05-31 `happymap/findingyourlife.html`: Fixed the mobile controls dock so filter, bottle, compass, and tag buttons stay visible across wider phone and tablet widths.
- 2026-05-31 `happymap/findingyourlife.html`: Removed the `MESSAGE` label from the popup body so only the content text shows.
- 2026-05-31 `happymap/findingyourlife.html`: Vertically aligned the popup age and career text with the thumbnail image in the top row.
+2026-05-31 `happymap/findingyourlife.html`: Removed the `MESSAGE` label from the popup body so only the content text shows.
+2026-05-31 `happymap/findingyourlife.html`: Vertically aligned the popup age and career text with the thumbnail image in the top row.
 2026-05-31 `happymap/findingyourlife.html`: Made the popup message bubble scrollable with a max-height so long paragraphs can be contained.
-2026-05-31 `happymap/findingyourlife.html`: Injected a temporary test data point (id `test-001`) and verified popup displays long content with an internal scrollbar.
-2026-05-31 `happymap/findingyourlife.html`: Also injected a visible SVG test icon at the map center for easy manual verification (class `test-injected`).
  2026-05-31 `happymap/findingyourlife.html`: Clamped the popup panel to the map-stage bounds on both desktop and mobile.
  2026-05-31 `happymap/findingyourlife.html`: Increased desktop popup text size while keeping popup bounds clamped inside the map for both desktop and mobile.
  2026-05-31 `happymap/findingyourlife.html`: Added a dedicated mobile controls dock below the map and moved filter/letter/zoom/minimap/tag controls into the dock on mobile breakpoints for consistent cross-device placement.

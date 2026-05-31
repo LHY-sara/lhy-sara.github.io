@@ -404,7 +404,7 @@
     #popup {
       position: fixed;
       z-index: 1050;
-      max-width: 320px;
+      max-width: 280px;
       width: max-content;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       background-color: rgba(255, 255, 255, 0.72) !important;
@@ -510,136 +510,247 @@
       transition: opacity 600ms ease, transform 420ms ease;
       pointer-events: auto;
     }
+    body.mobile-popup-hidden #story-panel {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(12px);
+    }
     /* ── 手機直向（portrait）：提示旋轉 ── */
     @media (max-width: 768px) and (orientation: portrait) {
       body::before {
-        content: "請旋轉裝置以獲得最佳體驗 🔄";
+        content: "請旋轉裝置以獲得最佳體驗";
         position: fixed;
         inset: 0;
         z-index: 9999;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(44, 95, 114, 0.92);
-        color: #fff;
+        background:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.20), transparent 42%),
+          linear-gradient(180deg, rgba(143, 212, 248, 0.94) 0%, rgba(95, 176, 208, 0.96) 100%);
+        color: #f8f6ef;
         font-size: 1.15rem;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-align: center;
         padding: 2rem;
         pointer-events: none;
+        text-shadow: 0 2px 10px rgba(44, 95, 114, 0.32);
+        animation: rotatePromptPop 480ms ease-out both;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        pointer-events: none;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 58%);
+      }
+
+      @keyframes rotatePromptPop {
+        0% {
+          opacity: 0;
+          transform: scale(0.88);
+        }
+        70% {
+          opacity: 1;
+          transform: scale(1.03);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
     }
 
     /* ── 手機橫向（landscape）版面 ── */
     @media (max-width: 900px) and (orientation: landscape) {
-      /* 整體 app 橫向排列：地圖左 | story-panel 右 */
       #app {
-        flex-direction: row;
+        position: relative;
+        display: block;
         height: 100vh;
         overflow: hidden;
       }
 
-      /* 地圖佔左側大部分寬度 */
       #map-stage {
-        flex: 1 1 0;
-        width: auto;
+        position: relative;
+        width: 100vw;
         height: 100vh;
-        overflow: hidden;
-      }
-
-      /* story-panel 在右側，固定寬度 */
-      #story-panel {
-        flex: 0 0 240px;
-        width: 240px;
-        height: 100vh;
-        min-height: unset;
-        padding: 0.6rem 0.7rem;
-        border-top: none;
-        border-left: 1px solid rgba(44, 95, 114, 0.08);
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        overflow-y: auto;
+        overflow: hidden;
+      }
+
+      #main-svg {
+        width: 100vw;
+        height: auto;
+        max-height: 100vh;
+      }
+
+      #intro-title {
+        top: 34% !important;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        width: 86%;
+      }
+
+      #intro-title .intro-text {
+        font-size: clamp(20px, 3vw, 32px) !important;
+      }
+
+      #island-caption-q1 {
+        left: 27%;
+        top: 31%;
+      }
+
+      #island-caption-q2 {
+        left: 73%;
+        top: 29%;
+      }
+
+      .intro-fadeout {
+        transform: translate(-50%, -12%);
+      }
+
+      .story-overlay {
+        inset: 0;
+        z-index: 1120;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 0;
+        pointer-events: none;
+      }
+
+      #start-explore-btn {
+        pointer-events: auto;
+        padding: 0.55rem 1rem;
+        font-size: 0.88rem;
+        transform: none;
+        position: absolute;
+        top: 15vh;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #story-panel {
+        position: absolute;
+        left: 50%;
+        top: 34vh;
+        transform: translateX(-50%);
+        width: min(88vw, 680px);
+        min-height: 0;
+        padding: 0;
+        border-top: none;
+        background: transparent;
+        z-index: 1110;
+        pointer-events: none;
       }
 
       .story-shell {
         width: 100%;
-        flex-direction: column;
-        gap: 0.7rem;
+        gap: 0.55rem;
         align-items: center;
+        justify-content: center;
+        transform: scale(0.6);
+        transform-origin: top center;
+        pointer-events: auto;
       }
 
-      /* NPC 縮小 */
       .story-npc {
-        width: 52px;
-        height: 52px;
-      }
-
-      /* 泡泡箭頭改為朝上（NPC 在上方） */
-      .story-bubble:before {
-        left: 50%;
-        bottom: auto;
-        top: -12px;
-        transform: translateX(-50%) rotate(225deg);
+        width: 48px;
+        height: 48px;
       }
 
       .story-bubble {
-        padding: 0.6rem 0.8rem;
+        padding: 0.45rem 0.65rem;
+        max-width: min(70vw, 480px);
+      }
+
+      .story-bubble:before {
+        left: 22px;
+        bottom: -10px;
+        transform: rotate(135deg);
       }
 
       .story-name {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
       }
 
       .story-text {
-        font-size: 0.88rem;
-        line-height: 1.5;
+        font-size: 0.78rem;
+        line-height: 1.35;
       }
 
-      /* 浮動按鈕調整：避免被 story-panel 擋住 */
-      #filter-btn {
-        left: 12px;
-        bottom: 12px;
-        width: 46px;
-        height: 46px;
+      .guide-next-btn {
+        width: 1.55rem;
+        height: 1.55rem;
+        font-size: 0.82rem;
       }
 
-      #letter-btn {
-        left: 70px;
-        bottom: 12px;
-        width: 46px;
-        height: 46px;
-      }
-
-      #zoom-controls {
-        right: 12px;
-        bottom: 12px;
-      }
-
-      /* letter-fill 按鈕改為在泡泡下方 */
       #letter-fill-btn {
         position: static;
         display: none;
         transform: none;
-        margin-top: 0.5rem;
-        width: 100%;
+        margin-top: 0.45rem;
+        width: fit-content;
+        max-width: 100%;
+        align-self: center;
+        padding: 0.35rem 0.9rem;
       }
+
       #letter-fill-btn.letter-visible {
-        display: flex !important;
+        display: inline-flex !important;
       }
 
-      /* 小地圖隱藏（空間不足） */
+      #filter-btn {
+        left: 10px;
+        bottom: 10px;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+      }
+
+      #letter-btn {
+        left: 58px;
+        bottom: 10px;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+      }
+
+      #letter-btn img {
+        width: 20px;
+        height: 20px;
+      }
+
+      #zoom-controls {
+        right: 10px;
+        bottom: 10px;
+        transform: scale(0.8);
+        transform-origin: bottom right;
+      }
+
+      #popup {
+        max-width: 170px;
+        font-size: 0.78rem;
+      }
+
+      #popup .card-header,
+      #popup .card-body {
+        padding: 0.45rem 0.55rem;
+      }
+
       #minimap-container {
-        display: none;
-      }
-
-      /* 開始探索按鈕 overlay 只限地圖區 */
-      .story-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 1100;
+        display: block !important;
+        right: 78px;
+        bottom: 10px;
+        width: 86px;
+        height: 56px;
+        transform: scale(0.88);
+        transform-origin: bottom right;
       }
     }
 
@@ -647,20 +758,20 @@
     @media (max-width: 768px) {
       .story-shell {
         width: 100%;
-        gap: 1rem;
+        gap: 0.55rem;
       }
       .story-npc {
-        width: 64px;
-        height: 64px;
+        width: 48px;
+        height: 48px;
       }
       .guide-next-btn {
-        width: 1.85rem;
-        height: 1.85rem;
-        font-size: 0.95rem;
+        width: 1.55rem;
+        height: 1.55rem;
+        font-size: 0.82rem;
       }
       .story-bubble:before {
-        left: 24px;
-        bottom: -12px;
+        left: 22px;
+        bottom: -10px;
         transform: rotate(135deg);
       }
       /* letter-fill-btn: 置於泡泡內，不超出畫面 */
@@ -670,14 +781,21 @@
         top: auto;
         transform: none;
         margin-top: 0.5rem;
-        width: 100%;
+        width: fit-content;
+        max-width: 100%;
+        align-self: center;
+        padding: 0.35rem 0.9rem;
         display: none;
       }
       #letter-fill-btn.letter-visible {
         display: inline-flex !important;
       }
       #minimap-container {
-        display: none;
+        display: block !important;
+        right: 78px;
+        bottom: 10px;
+        width: 86px;
+        height: 56px;
       }
     }
     /* Intro title: centered, cursive, typewriter effect */
@@ -951,10 +1069,16 @@
 
       if (minimap) {
         if (isLandscapeMobile) {
-          minimap.style.display = "none";
+          minimap.style.display = "block";
+          minimap.style.right = "78px";
+          minimap.style.bottom = "10px";
+          minimap.style.width = "86px";
+          minimap.style.height = "56px";
         } else {
           minimap.style.right = "100px";
           minimap.style.bottom = "32px";
+          minimap.style.width = "120px";
+          minimap.style.height = "80px";
           minimap.style.display = "";
         }
       }
@@ -1070,7 +1194,11 @@
       hideLetterFillButton();
       setGuideSpotlight('none');
       setOceanTitleVisible(false);
-      setActiveIcon(event.currentTarget || event.target);
+      if (window.innerWidth <= 900) {
+        document.body.classList.add('mobile-popup-hidden');
+      }
+      const activeIcon = event.currentTarget || event.target;
+      setActiveIcon(activeIcon);
       const popup = document.getElementById("popup");
       document.getElementById("popup-age").textContent = `年齡：${d.age || "-"}`;
       document.getElementById("popup-category").textContent = `職涯熱忱：${d.category || "-"}`;
@@ -1082,16 +1210,38 @@
       document.getElementById("story-text").textContent = d.content || "（沒有文字內容）";
 
       const popupRect = popup.getBoundingClientRect();
-      const iconRect = event.target.getBoundingClientRect();
+      const iconRect = activeIcon.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const margin = 12;
+      const gap = 10;
 
-      let top = iconRect.top - popupRect.height - 10;
+      const spaceAbove = iconRect.top - margin;
+      const spaceBelow = viewportHeight - iconRect.bottom - margin;
+      const spaceLeft = iconRect.left - margin;
+      const spaceRight = viewportWidth - iconRect.right - margin;
+
+      const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+      let top = iconRect.top + (iconRect.height / 2) - (popupRect.height / 2);
       let left = iconRect.left + (iconRect.width / 2) - (popupRect.width / 2);
 
-      if (top < 0) top = iconRect.bottom + 10;
-      if (left < 10) left = 10;
-      if (left + popupRect.width > window.innerWidth - 10) {
-        left = window.innerWidth - popupRect.width - 10;
+      if (spaceAbove >= popupRect.height + gap || spaceAbove >= spaceBelow) {
+        top = iconRect.top - popupRect.height - gap;
+      } else {
+        top = iconRect.bottom + gap;
       }
+
+      if (spaceRight >= popupRect.width + gap && spaceRight >= spaceLeft) {
+        left = iconRect.right + gap;
+        top = clamp(iconRect.top + (iconRect.height / 2) - (popupRect.height / 2), margin, viewportHeight - popupRect.height - margin);
+      } else if (spaceLeft >= popupRect.width + gap) {
+        left = iconRect.left - popupRect.width - gap;
+        top = clamp(iconRect.top + (iconRect.height / 2) - (popupRect.height / 2), margin, viewportHeight - popupRect.height - margin);
+      }
+
+      left = clamp(left, margin, viewportWidth - popupRect.width - margin);
+      top = clamp(top, margin, viewportHeight - popupRect.height - margin);
 
       popup.style.top = top + "px";
       popup.style.left = left + "px";
@@ -1314,6 +1464,7 @@
         window.__explorationStarted = true;
         setInteractionLock(false);
         document.body.classList.add('exploration-started');
+        document.body.classList.remove('mobile-popup-hidden');
 
         // fade out and remove button
         btn.style.transition = 'opacity 280ms ease';
@@ -1364,6 +1515,7 @@
         setGuideSpotlight('none');
         setOceanTitleVisible(false);
         hideIslandCaptions();
+        document.body.classList.remove('mobile-popup-hidden');
         if (storyShell.classList.contains('start-hidden')) {
           storyShell.classList.remove('start-hidden');
           void storyShell.offsetWidth;
@@ -1384,6 +1536,9 @@
 
       fillBtn.addEventListener('click', () => {
         if (window.__explorationStarted !== true || window.__interactionsUnlocked !== true) return;
+        if (window.innerWidth <= 900) {
+          document.body.classList.add('mobile-popup-hidden');
+        }
         letterModal.show();
       });
     }

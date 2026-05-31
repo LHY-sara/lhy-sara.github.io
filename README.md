@@ -2,6 +2,20 @@
 # 羅卉昀 Luo, Hui-Yun
 
 ## Updates
+ 2026-05-31 `happymap/findingyourlife.html`: Removed the `MESSAGE` label from the popup body so only the content text shows.
+ 2026-05-31 `happymap/findingyourlife.html`: Vertically aligned the popup age and career text with the thumbnail image in the top row.
+2026-05-31 `happymap/findingyourlife.html`: Made the popup message bubble scrollable with a max-height so long paragraphs can be contained.
+2026-05-31 `happymap/findingyourlife.html`: Injected a temporary test data point (id `test-001`) and verified popup displays long content with an internal scrollbar.
+2026-05-31 `happymap/findingyourlife.html`: Also injected a visible SVG test icon at the map center for easy manual verification (class `test-injected`).
+ 2026-05-31 `happymap/findingyourlife.html`: Clamped the popup panel to the map-stage bounds on both desktop and mobile.
+ 2026-05-31 `happymap/findingyourlife.html`: Increased desktop popup text size while keeping popup bounds clamped inside the map for both desktop and mobile.
+ 2026-05-31 `happymap/findingyourlife.html`: Added a dedicated mobile controls dock below the map and moved filter/letter/zoom/minimap/tag controls into the dock on mobile breakpoints for consistent cross-device placement.
+ 2026-05-31 `happymap/findingyourlife.html`: Moved the desktop tools tag button to the top-right corner so it no longer overlaps the guide "next" button area.
+ 2026-05-31 `happymap/findingyourlife.html`: Replaced the tools label with a three-line tag icon, added the same tag-toggle behavior on desktop, and removed mobile zoom buttons while keeping minimap toggle support.
+ 2026-05-31 `happymap/findingyourlife.html`: Scaled the icon popup panel down by 25% on both desktop and mobile layouts.
+ 2026-05-31 `happymap/findingyourlife.html`: Rebuilt icon popups into a two-row layout with a thumbnail image on the left, age and career text on the right, and a message bubble for the content.
+ 2026-05-31 `happymap/findingyourlife.html`: Removed mobile zoom controls by keeping `#zoom-controls` hidden on mobile even when tools are toggled visible.
+ 2026-05-31 `happymap/findingyourlife.html`: Hid mobile minimap/zoom by default and added a bottom-right tools tag that unlocks and toggles them after the final guide line.
  2026-05-31 `happymap/findingyourlife.html`: Removed the mobile top gap by top-aligning the map inside the mobile landscape stage.
  2026-05-31 `happymap/findingyourlife.html`: Widened the mobile icon popup panel slightly.
  2026-05-31 `happymap/findingyourlife.html`: Moved the app initialization off `load` and onto DOM ready so the start button works even when external embeds delay page load.

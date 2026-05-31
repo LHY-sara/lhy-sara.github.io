@@ -2,6 +2,7 @@
 # 羅卉昀 Luo, Hui-Yun
 
 ## Updates
+2026-06-01 `happymap/findingyourlife.html`: Forced the mobile icon popup into a bottom-sheet layout on small screens so it stays inside the map/viewport on 6.5-inch phones.
 2026-05-31 `happymap/findingyourlife.html`: Fixed the mobile controls dock so filter, bottle, compass, and tag buttons stay visible across wider phone and tablet widths.
  2026-05-31 `happymap/findingyourlife.html`: Removed the `MESSAGE` label from the popup body so only the content text shows.
  2026-05-31 `happymap/findingyourlife.html`: Vertically aligned the popup age and career text with the thumbnail image in the top row.

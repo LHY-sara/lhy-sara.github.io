@@ -1273,9 +1273,14 @@
       }
 
       #popup {
-        max-width: min(94vw, 315px);
-        width: min(94vw, 315px);
-        max-height: calc(100vh - 88px);
+        left: 50% !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: 84px !important;
+        transform: translateX(-50%);
+        width: min(92vw, 320px);
+        max-width: min(92vw, 320px);
+        max-height: calc(100vh - 120px);
         overflow: auto;
       }
 
@@ -2280,12 +2285,28 @@
       document.getElementById("popup-content").textContent = d.content || "";
       popup.classList.remove("d-none");
       popup.style.visibility = 'hidden';
-      popup.style.left = '0px';
-      popup.style.top = '0px';
 
       const speaker = `${d.age || "未知年齡"} · ${d.category || "未分類"}`;
       document.getElementById("story-name").textContent = speaker;
       document.getElementById("story-text").textContent = d.message || d.content || "（沒有文字內容）";
+
+      if (window.innerWidth <= 768) {
+        popup.style.left = '50%';
+        popup.style.top = 'auto';
+        popup.style.right = 'auto';
+        popup.style.bottom = '84px';
+        popup.style.transform = 'translateX(-50%)';
+        popup.style.maxWidth = 'min(92vw, 320px)';
+        popup.style.maxHeight = 'calc(100vh - 120px)';
+        popup.style.visibility = 'visible';
+        return;
+      }
+
+      popup.style.left = '0px';
+      popup.style.top = '0px';
+      popup.style.right = '';
+      popup.style.bottom = '';
+      popup.style.transform = '';
 
       const iconRect = activeIcon.getBoundingClientRect();
       const mapStage = document.getElementById("map-stage");

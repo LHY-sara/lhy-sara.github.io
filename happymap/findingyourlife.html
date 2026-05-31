@@ -1275,6 +1275,8 @@
       #popup {
         max-width: min(94vw, 315px);
         width: min(94vw, 315px);
+        max-height: calc(100vh - 88px);
+        overflow: auto;
       }
 
       .popup-shell {
@@ -1311,6 +1313,13 @@
       .popup-message-text {
         font-size: 0.675rem;
         line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 1024px) and (orientation: landscape) {
+      #popup {
+        max-height: calc(100vh - 96px);
+        overflow: auto;
       }
     }
 
@@ -2270,19 +2279,28 @@
       document.getElementById("popup-category").innerHTML = `<span>職涯熱忱：</span>${escapeHtml(d.category || "-")}`;
       document.getElementById("popup-content").textContent = d.content || "";
       popup.classList.remove("d-none");
+      popup.style.visibility = 'hidden';
+      popup.style.left = '0px';
+      popup.style.top = '0px';
 
       const speaker = `${d.age || "未知年齡"} · ${d.category || "未分類"}`;
       document.getElementById("story-name").textContent = speaker;
       document.getElementById("story-text").textContent = d.message || d.content || "（沒有文字內容）";
 
-      const popupRect = popup.getBoundingClientRect();
       const iconRect = activeIcon.getBoundingClientRect();
+      const mapStage = document.getElementById("map-stage");
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      const mapStage = document.getElementById("map-stage");
       const mapRect = mapStage ? mapStage.getBoundingClientRect() : { left: 0, top: 0, right: viewportWidth, bottom: viewportHeight };
       const margin = 12;
       const gap = 10;
+
+      const maxPopupWidth = Math.max(240, Math.floor(Math.min(viewportWidth, mapRect.width) - (margin * 2)));
+      const maxPopupHeight = Math.max(180, Math.floor(mapRect.height - (margin * 2)));
+      popup.style.maxWidth = `${maxPopupWidth}px`;
+      popup.style.maxHeight = `${Math.max(maxPopupHeight, 180)}px`;
+
+      const popupRect = popup.getBoundingClientRect();
 
       const spaceAbove = iconRect.top - mapRect.top - margin;
       const spaceBelow = mapRect.bottom - iconRect.bottom - margin;
@@ -2290,6 +2308,8 @@
       const spaceRight = mapRect.right - iconRect.right - margin;
 
       const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+      const safeLeftMax = Math.max(mapRect.left + margin, mapRect.right - popupRect.width - margin);
+      const safeTopMax = Math.max(mapRect.top + margin, mapRect.bottom - popupRect.height - margin);
 
       let top = iconRect.top + (iconRect.height / 2) - (popupRect.height / 2);
       let left = iconRect.left + (iconRect.width / 2) - (popupRect.width / 2);
@@ -2302,17 +2322,18 @@
 
       if (spaceRight >= popupRect.width + gap && spaceRight >= spaceLeft) {
         left = iconRect.right + gap;
-        top = clamp(iconRect.top + (iconRect.height / 2) - (popupRect.height / 2), mapRect.top + margin, mapRect.bottom - popupRect.height - margin);
+        top = clamp(iconRect.top + (iconRect.height / 2) - (popupRect.height / 2), mapRect.top + margin, safeTopMax);
       } else if (spaceLeft >= popupRect.width + gap) {
         left = iconRect.left - popupRect.width - gap;
-        top = clamp(iconRect.top + (iconRect.height / 2) - (popupRect.height / 2), mapRect.top + margin, mapRect.bottom - popupRect.height - margin);
+        top = clamp(iconRect.top + (iconRect.height / 2) - (popupRect.height / 2), mapRect.top + margin, safeTopMax);
       }
 
-      left = clamp(left, mapRect.left + margin, mapRect.right - popupRect.width - margin);
-      top = clamp(top, mapRect.top + margin, mapRect.bottom - popupRect.height - margin);
+      left = clamp(left, mapRect.left + margin, safeLeftMax);
+      top = clamp(top, mapRect.top + margin, safeTopMax);
 
       popup.style.top = top + "px";
       popup.style.left = left + "px";
+      popup.style.visibility = 'visible';
     }
 
     function escapeHtml(text) {
